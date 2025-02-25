@@ -1,8 +1,6 @@
 # /usr/bin/python
 
 import argparse
-from ast import parse
-
 
 dep_map = {
     "libasound2-dev": "pkgconfig(alsa)",
