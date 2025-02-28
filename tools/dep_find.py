@@ -31,6 +31,16 @@ dep_map = {
     "libcairo2-dev": "pkgconfig(cairo)",
     "libgtkmm-3.0-dev": "pkgconfig(gtkmm-3.0)",
     "libsqlite3-dev": "pkgconfig(sqlite3)",
+    "qt5-default": "pkgconfig(Qt5)",
+    "libqt5svg5-dev": "pkgconfig(Qt5Svg)",
+    "portaudio19-dev": "pkgconfig(portaudio-2.0)",
+    "librtmidi-dev": "pkgconfig(pkgconfig(rtmidi))",
+    "libstk0-dev": "stk-devel",
+    "libqcustomplot-dev": "pkgconfig(qcustomplot-qt5)",
+    "libvorbis-dev": "pkgconfig(vorbis)",
+    "libogg-dev": "pkgconfig(ogg)",
+    "libssl-dev": "pkgconfig(libssl)",
+    "libflac-dev": "pkgconfig(flac)",
 }
 
 
@@ -58,10 +68,10 @@ BuildRequires:  pkgconfig(alsa)
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("deps", nargs="*", default=[])
     parser.add_argument("--notfound", action="store_true")
     parser.add_argument("--format", action="store_true")
     parser.add_argument("--markdown", action="store_true")
+    parser.add_argument("deps", nargs="*", default=[])
     args = parser.parse_args()
     found = 0
     notfound = 0
