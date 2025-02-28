@@ -80,5 +80,8 @@ clean:
 clean-archive:
 	@rm -rf $(BUILDDIR)/SOURCES/*
 
+clean-builddep:
+	@rm -f $(DNF_BUILDDEP_INSTALLED)
+
 
 .PHONY: clean mockinst mockbuild coprbuild 
