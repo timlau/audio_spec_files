@@ -27,6 +27,8 @@ BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  desktop-file-utils
+BuildRequires:  libappstream-glib
+
 
 %description
 Polyphone is a multiplatform and open-source soundfont editor for creating musical instruments.
