@@ -1,5 +1,6 @@
 %global debug_package %{nil}
 %global builddest bin
+%global app_id io.polyphone.polyphone
 
 Name:           polyphone
 Version:        2.5.1
@@ -24,6 +25,7 @@ BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  desktop-file-utils
 
 %description
 Polyphone is a multiplatform and open-source soundfont editor for creating musical instruments.
@@ -49,10 +51,21 @@ make -j$(nproc)
 %install
 %make_install
 
+%check
+desktop-file-validate %{buildroot}/%{_datadir}/applications/%{app_id}.desktop
+
 %files 
-%license LICENSE
+%license LICENSE.txt
 %doc README.md
-%{_bindir}/*
+%{_bindir}/%{name}
+%{_datadir}/mime/packages/%{name}.xml
+%{_datadir}/applications/%{app_id}.desktop
+%{_datadir}/icons/%{name}.png
+
+# /usr/share/doc/polyphone
+# /usr/share/doc/polyphone/changelog
+# /usr/share/doc/polyphone/polyphone.1
+
 
 
 %changelog
