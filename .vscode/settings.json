@@ -1,0 +1,40 @@
+{
+    "cSpell.ignoreWords": [
+        "Mappings"
+    ],
+    "cSpell.words": [
+        "dependcy",
+        "devel",
+        "fontconfig",
+        "freetype",
+        "gtkmm",
+        "jackd",
+        "keysyms",
+        "ladspa",
+        "libasound",
+        "libcairo",
+        "libfontconfig",
+        "libfreetype",
+        "libglu",
+        "libgtkmm",
+        "libjack",
+        "libsqlite",
+        "libwebkit",
+        "libx",
+        "libxcb",
+        "libxcomposite",
+        "libxcursor",
+        "libxext",
+        "libxinerama",
+        "libxkbcommon",
+        "libxrandr",
+        "libxrender",
+        "xcomposite",
+        "xcursor",
+        "xext",
+        "xinerama",
+        "xkbcommon",
+        "xrandr",
+        "xrender"
+    ]
+}
