@@ -67,6 +67,15 @@ mockbuild: srpm
 	@echo "--> Build RPMs"
 	@tree -P *.rpm -I *.src.rpm $(MOCK_RESULT)
 
+mock-files:
+	find $(MOCK_RESULT) -name *64.rpm -print -exec rpm -qlp {} \;
+
+mock-provides:
+	find $(MOCK_RESULT) -name *64.rpm -print -exec rpm -qp --provides {} \;
+
+mock-requires:
+	find $(MOCK_RESULT) -name *64.rpm -print -exec rpm -qp --requires {} \;
+
 mockinst:
 	@sudo dnf install $(MOCK_RESULT)/$(PROJECT)*-$(VERSION)*.x86_64.rpm
 
