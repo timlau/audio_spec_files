@@ -41,6 +41,8 @@ Polyphone is a multiplatform and open-source soundfont editor for creating music
 * recorder to keep a trace of what is played in a .wav file
 * soundfont browser connected to the online repository
 
+#### YK Chorus
+A chorus effect inspired by the one found in certain well-known Japanese vintage analog synthesizers (Juno 60)
 
 
 ## Install from timlau/audio copr
@@ -101,7 +103,13 @@ sudo dnf install libJUCE-devel
 sudo dnf install polyphone
 ```
 
-
+#### Install ykchorus  (clap or vst3 or lv2  or standalone)
+```bash
+sudo dnf install ykchorus-clap
+sudo dnf install ykchorus-vst3
+sudo dnf install ykchorus-lv2
+sudo dnf install ykchorus
+```
 
 ## Make targets
 Each application/plugin subdirectory contains a Makefile with the following target
