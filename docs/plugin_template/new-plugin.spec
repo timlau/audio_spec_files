@@ -2,13 +2,14 @@
 %global gitdate .git20250222.a74ffd3
 %global builddest bin
 
-Name:           new-plugin
-Version:        1.0.0
+Name:           {{ name }}
+Version:        {{ version }}
 Release:        1%{?gitdate}%{?dist}
 Summary:        
 
 License:        GPLv3+
-URL:            
+URL:            https://github.com/{{ github_owner }}/{{ github_project }}
+
 # The source for this package was pulled from upstream's vcs.
 # check here : https://github.com/timlau/spec_files/tree/master/plpugins/
 # for a Makefile that can be used to create the source tarball
@@ -78,5 +79,5 @@ This package contains %{name} as a LV2 plugin.
 
 
 %changelog
-* Sun Feb 23 2025 Tim Lauridsen <tla@rasmil.dk> - 1.0.0-1
+* {{ changelog_date }} Tim Lauridsen <tla@rasmil.dk> - {{ version }}-1
 - Initial package
