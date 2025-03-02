@@ -1,4 +1,4 @@
-SUBDIRS = $(shell ls plugins/)
+SUBDIRS := $(shell ls plugins/)
 # ARCHIVE_EXCLUDE = plugins/dexed/*
 
 all:
@@ -7,7 +7,7 @@ all:
 clean:
 	@for dir in $(SUBDIRS); do \
 		echo "Cleaning plugins/$$dir"; \
-		$(MAKE) -s -C $$dir clean; \
+		$(MAKE) -s -C plugins/$$dir clean; \
 	done
 
 show:
