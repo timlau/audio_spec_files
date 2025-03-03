@@ -4,7 +4,7 @@
 
 Name:           ykchorus
 Version:        0.2.4
-Release:        1%{?gitdate}%{?dist}
+Release:        2%{?gitdate}%{?dist}
 Summary:        A chorus effect
 
 License:        GPLv2
@@ -53,13 +53,10 @@ This package contains %{name} as a LV2 plugin.
 ln -s -r --force dpf/dgl/src/pugl.cpp dpf/dgl/src/pugl.mm
 
 %build
-%make_build
+%make_build BUILD_VST2=false BUILD_LADSPA=false
 
 %install
-%make_install PREFIX=%{_prefix} LIBDIR=%{_libdir} 
-# Remove unwanted stuff
-rm -rf %{buildroot}%{_libdir}/ladspa/
-rm -rf %{buildroot}%{_libdir}/vst/
+%make_install PREFIX=%{_prefix} LIBDIR=%{_libdir} BUILD_VST2=false BUILD_LADSPA=false
 
 %files clap
 %license LICENSE
@@ -82,5 +79,7 @@ rm -rf %{buildroot}%{_libdir}/vst/
 %{_bindir}/%{name}
 
 %changelog
+* Mon Mar 3 2025 Tim Lauridsen <tla@rasmil.dk> - 0.2.4-2
+- don't build VST2 & LADSPA
 * Sat Mar 1 2025 Tim Lauridsen <tla@rasmil.dk> - 0.2.4-1
 - Initial package
