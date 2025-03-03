@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20250302.c8d3861f
+%global gitdate .git20250303.c8d3861f
 %global builddest redhat-linux-build/Odin2_artefacts/Release/
 %global buildname Odin2
 
@@ -37,13 +37,6 @@ High-quality emulations of legendary analog filters, like the Moog Ladder, the K
 Finish it off with five onboard FX or dive into endless modulation possibilities. 
 There’s a whole world to explore in Odin 2.
 
-# %package clap
-# Summary: CLAP plugin of %{name}
-
-# %description clap
-# %{description}
-# This package contains AIDA-X as a CLAP plugin.
-
 %package vst3
 Summary: VST3 plugin of ½´%{name}
 
@@ -62,8 +55,8 @@ This package contains %{name} as a LV2 plugin.
 %autosetup -p1
 
 %build
-%cmake -D CMAKE_BUILD_TYPE=Release
-%cmake_build --config Release -j1
+%cmake -DCMAKE_BUILD_TYPE=Release
+%cmake_build --config Release
 
 %install
 install -d -m 755 %{buildroot}%{_bindir}
@@ -72,11 +65,6 @@ install -d -m 755 %{buildroot}%{_libdir}/lv2
 cp -R %{builddest}/VST3/%{buildname}.vst3 %{buildroot}%{_libdir}/vst3/ 
 cp -R %{builddest}/LV2/%{buildname}.lv2 %{buildroot}%{_libdir}/lv2/ 
 install %{builddest}/Standalone/%{buildname} %{buildroot}%{_bindir}/
-
-# %files clap
-# %license LICENSE
-# %doc README.md
-# %{_libdir}/clap/*.clap
 
 %files vst3
 %license LICENSE
