@@ -3,10 +3,10 @@ ifeq ($(ROOT),)
 $(error invalid usage)
 endif
 
-GIT_DIR = ${BUILDDIR}
 VERSION=$(shell awk '/Version:/ { print $$2 }' ${PROJECT}.spec)
 CURDIR = ${shell pwd}
 BUILDDIR= $(CURDIR)/build
+GIT_DIR = ${BUILDDIR}
 TAR_GZ = ${BUILDDIR}/SOURCES/$(PROJECT)-$(VERSION).tar.gz
 
 

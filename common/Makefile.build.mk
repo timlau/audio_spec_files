@@ -8,6 +8,7 @@ DNF_BUILDDEP_INSTALLED = ${BUILDDIR}/DEPS_INSTALLED
 MOCK_REL = fedora-41-x86_64
 MOCK_RESULT = /var/lib/mock/${MOCK_REL}/result
 COPR_REPO = audio
+SUB_MODULES=$(shell sed -n 's/\tpath = //p' $(SRC_DIR)/.gitmodules)
 
 all: srpm
 
@@ -27,14 +28,12 @@ endif
 endif
 
 update_submodules:
-	@cd $(SRC_DIR); git submodule update --init --recursive
-ifdef GITSUBMODULE_EXCLUDE
-	@echo "--> Excludeing git submodules : $(GITSUBMODULE_EXCLUDE)"
-	@@cd $(SRC_DIR); git submodule deinit $(GITSUBMODULE_EXCLUDE) 2>/dev/null
-endif
-ifdef GITSUB_REMOTE
-	@@cd $(SRC_DIR); git submodule update --remote $(GITSUB_REMOTE)
-endif
+	@for module in $(SUB_MODULES); do \
+		if [[ ! " $(GIT_EXCLUDE) " =~ " $$module " ]]; then \
+			echo "Module: $$module"; \
+			cd $(SRC_DIR); git submodule update --init --recursive $$module; \
+		fi \
+	done
 
 copy_pactches:
 ifneq (,$(wildcard $(CURDIR)/*.patch))
@@ -66,7 +65,11 @@ endif
 
 mockbuild: srpm
 	@echo "Building RPM in mock"
+ifdef MOCK_REPO
+	@mock -r $(MOCK_REL) --rebuild $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm -a $(MOCK_REPO)
+else
 	@mock -r $(MOCK_REL) --rebuild $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm
+endif	
 	@echo "--> Build RPMs"
 	@tree -P *.rpm -I *.src.rpm $(MOCK_RESULT)
 
@@ -100,4 +103,4 @@ clean-build:
 
 
 
-.PHONY: clean mockinst mockbuild coprbuild 
+.PHONY: clean mockinst mockbuild coprbuild test-submodules
