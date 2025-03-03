@@ -1,7 +1,7 @@
 PROJECT  = polyphone
 
 # exclude submodules from source tarball
-# GITSUBMODULE_EXCLUDE = 
+# GIT_EXCLUDE = 
 
 # Checkout a give git tag
 # GIT_TAG = v$(VERSION)

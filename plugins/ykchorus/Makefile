@@ -2,7 +2,7 @@ PROJECT  = ykchorus
 GIT_URL  = git@github.com:SpotlightKid/ykchorus.git
 
 # exclude submodules from source tarball
-# GITSUBMODULE_EXCLUDE = 
+# GIT_EXCLUDE = 
 
 # Checkout a give git tag
 # GIT_TAG = v$(VERSION)
