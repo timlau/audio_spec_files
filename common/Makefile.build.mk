@@ -32,6 +32,9 @@ ifdef GITSUBMODULE_EXCLUDE
 	@echo "--> Excludeing git submodules : $(GITSUBMODULE_EXCLUDE)"
 	@@cd $(SRC_DIR); git submodule deinit $(GITSUBMODULE_EXCLUDE) 2>/dev/null
 endif
+ifdef GITSUB_REMOTE
+	@@cd $(SRC_DIR); git submodule update --remote $(GITSUB_REMOTE)
+endif
 
 copy_pactches:
 ifneq (,$(wildcard $(CURDIR)/*.patch))
@@ -91,6 +94,10 @@ clean-archive:
 
 clean-builddep:
 	@rm -f $(DNF_BUILDDEP_INSTALLED)
+
+clean-build:
+	@rm -rf $(BUILDDIR)/BUILD
+
 
 
 .PHONY: clean mockinst mockbuild coprbuild 

@@ -1,0 +1,43 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7f1decb3..9bf571fa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,9 +4,9 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET 10.11 CACHE STRING "Minimum macOS version")
+ project(Odin2 VERSION 2.3.4 LANGUAGES C CXX ASM)
+ 
+ # ================== CMake Subdirs ======================
+-add_subdirectory(libs/clap-juce-extensions)
++#add_subdirectory(libs/clap-juce-extensions)
+ if(UNIX AND NOT APPLE)
+-  add_subdirectory(libs/JUCELV2)
++  find_package(JUCE)
+ else()
+   add_subdirectory(libs/JUCE)
+ endif()
+@@ -46,14 +46,14 @@ juce_add_plugin(Odin2
+   IS_SYNTH TRUE
+   NEEDS_MIDI_INPUT TRUE
+   COPY_PLUGIN_AFTER_BUILD ${ODIN2_COPY_PLUGIN_AFTER_BUILD}
+-  LV2_URI https://thewavewarden.com/odin2
++  LV2URI https://thewavewarden.com/odin2
+   LV2_SHARED_LIBRARY_NAME Odin2
+ )
+ 
+ # ==================== CLAP =======================
+-clap_juce_extensions_plugin(TARGET Odin2
+-        CLAP_ID "com.thewavewarden.odin2"
+-        CLAP_FEATURES instrument "virtual analog")
++#clap_juce_extensions_plugin(TARGET Odin2
++#        CLAP_ID "com.thewavewarden.odin2"
++#        CLAP_FEATURES instrument "virtual analog")
+ 
+ # ==================== JUCE Defines =======================
+ juce_generate_juce_header(Odin2)
+@@ -64,7 +64,6 @@ target_compile_definitions(Odin2
+     JUCE_VST3_CAN_REPLACE_VST2=0
+     JUCE_WEB_BROWSER=0
+     JUCE_MODAL_LOOPS_PERMITTED=1
+-    JUCE_DISPLAY_SPLASH_SCREEN=0
+ )
+ 
+ # ==================== Check OS =======================
