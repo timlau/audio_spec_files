@@ -45,6 +45,14 @@ Polyphone is a multiplatform and open-source soundfont editor for creating music
 A chorus effect inspired by the one found in certain well-known Japanese vintage analog synthesizers (Juno 60)
 
 
+#### Odin 2
+Odin 2 is a 24-voice polyphonic powerhouse that will transport you from your studio straight to Valhalla.
+Whether you're after earth-shattering basses, soaring leads, or otherworldly FX, Odin 2 delivers it all.
+Harness the classic warmth of analog waveforms — or draw custom ones. 
+High-quality emulations of legendary analog filters, like the Moog Ladder, the Korg 35 and many more let you shape your sound. 
+Finish it off with five onboard FX or dive into endless modulation possibilities. 
+There’s a whole world to explore in Odin 2.
+
 ## Install from timlau/audio copr
 
 ### enable copr repo in Fedora 40+
@@ -109,6 +117,13 @@ sudo dnf install ykchorus-clap
 sudo dnf install ykchorus-vst3
 sudo dnf install ykchorus-lv2
 sudo dnf install ykchorus
+```
+
+#### Install odin2  (vst3 or lv2  or standalone)
+```bash
+sudo dnf install odin2-vst3
+sudo dnf install odin2-lv2
+sudo dnf install odin2
 ```
 
 ## Make targets
