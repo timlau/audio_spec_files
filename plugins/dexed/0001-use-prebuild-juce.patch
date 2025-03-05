@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 92f66d9..83c0feb 100644
+index 92f66d9..674fad3 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -24,8 +24,9 @@ endif()
@@ -14,3 +14,59 @@ index 92f66d9..83c0feb 100644
  add_subdirectory(libs/clap-juce-extensions EXCLUDE_FROM_ALL)
  
  #Adds all the module sources so they appear correctly in the IDE
+@@ -64,3 +65,23 @@ target_compile_options(${PROJECT_NAME} PUBLIC
+         #  replace cxxx with /wdxxx to supress them)
+         )
+ endif()
++
++# Linux Installation 
++if (UNIX AND NOT APPLE)
++        include(GNUInstallDirs)
++        set(PLUGIN_NAME "${PROJECT_NAME}" CACHE INTERNAL "" )
++        set(ARTEFACTS_DIR Source/${PLUGIN_NAME}_artefacts)
++        message(STATUS "Install: Plugin Name: ${PLUGIN_NAME} : Artefacts_dir: ${ARTEFACTS_DIR}")
++
++        install(DIRECTORY ${CMAKE_BINARY_DIR}/${ARTEFACTS_DIR}/${CMAKE_BUILD_TYPE}/VST3/${PLUGIN_NAME}.vst3
++                DESTINATION ${CMAKE_INSTALL_LIBDIR}/vst3  )
++
++        install(DIRECTORY ${CMAKE_BINARY_DIR}/${ARTEFACTS_DIR}/${CMAKE_BUILD_TYPE}/LV2/${PLUGIN_NAME}.lv2
++                DESTINATION ${CMAKE_INSTALL_LIBDIR}/lv2  )
++
++        install(TARGETS ${PLUGIN_NAME}_Standalone
++                DESTINATION ${CMAKE_INSTALL_BINDIR}  )
++
++        install(TARGETS ${PLUGIN_NAME}_CLAP
++                DESTINATION ${CMAKE_INSTALL_LIBDIR}/clap )
++endif ()        
+diff --git a/Source/CMakeLists.txt b/Source/CMakeLists.txt
+index a8313d1..7e88835 100644
+--- a/Source/CMakeLists.txt
++++ b/Source/CMakeLists.txt
+@@ -6,6 +6,8 @@ if(NOT DEXED_SKIP_VST3)
+   list(APPEND DEXED_JUCE_FORMATS VST3)
+ endif()
+ 
++list(APPEND DEXED_JUCE_FORMATS LV2)
++
+ if (APPLE)
+   list(APPEND DEXED_JUCE_FORMATS AU)
+ endif()
+@@ -28,7 +30,8 @@ juce_add_plugin("${BaseTargetName}"
+         PRODUCT_NAME "Dexed"
+         DESCRIPTION "Dexed FM Synth"
+         BUNDLE_ID "com.digitalsuburban.Dexed"  # To avoid CMake Warning at libs/JUCE/extras/Build/CMake/JUCEUtils.cmake
+-        COPY_PLUGIN_AFTER_BUILD TRUE
++        COPY_PLUGIN_AFTER_BUILD FALSE
++        LV2URI https://github.com/asb2m10/dexed
+ )
+ 
+ clap_juce_extensions_plugin(TARGET ${BaseTargetName}
+@@ -87,7 +90,7 @@ target_compile_definitions(${BaseTargetName} PUBLIC
+     JUCE_JACK=1
+     JUCE_ALSA=$<IF:$<BOOL:${DEXED_ALSA}>,1,0>
+     JUCE_MODAL_LOOPS_PERMITTED=1 # needed for FileBrowser in CartManager
+-    JUCE_DISPLAY_SPLASH_SCREEN=0
++    # JUCE_DISPLAY_SPLASH_SCREEN=0
+     JUCE_REPORT_APP_USAGE=0
+     # JUCE_COREGRAPHICS_RENDER_WITH_MULTIPLE_PAINT_CALLS=1     # REVERT BACK SINCE THERE IS AN ISSUE WITH JUCE 7.0.0
+ )

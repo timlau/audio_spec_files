@@ -5,7 +5,7 @@
 
 Name:           dexed
 Version:        0.9.8
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Standalone version of Dexed a synth that is closely modeled on the Yamaha DX7
 
 License:        GPLv3
@@ -20,7 +20,7 @@ Patch0:         0001-use-prebuild-juce.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(jack)
+BuildRequires:  pipewire-jack-audio-connection-kit-devel
 BuildRequires:  pkgconfig(alsa) 
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(x11) 
@@ -52,10 +52,16 @@ Dexed is a multi platform, multi format plugin synth that is closely modeled on 
 Dexed is also a midi cartridge librarian/manager for the DX7.
 This package contains Dexed as a VST3 plugin.
 
+%package lv2
+Summary:	LV2 plugin of Dexed a synth that is closely modeled on the Yamaha DX7
+
+%description lv2
+Dexed is a multi platform, multi format plugin synth that is closely modeled on the Yamaha DX7.
+Dexed is also a midi cartridge librarian/manager for the DX7.
+This package contains Dexed as a LV2 plugin.
 
 %prep
 %autosetup -p1
-
 
 %build
 %cmake
@@ -63,20 +69,21 @@ This package contains Dexed as a VST3 plugin.
 
 %install
 %cmake_install
-# cmake does not install the files in the correct directories
-# so we need to do it manually
-install -d -m 755 %{buildroot}%{_bindir}
-install -d -m 755 %{buildroot}%{_libdir}/vst3
-install -d -m 755 %{buildroot}%{_libdir}/clap
-cp -R %{builddest}/VST3/Dexed.vst3 %{buildroot}%{_libdir}/vst3/ 
-install %{builddest}/CLAP/Dexed.clap %{buildroot}%{_libdir}/clap/
-install %{builddest}/Standalone/Dexed %{buildroot}%{_bindir}/
 
 %files clap
+%doc README.md
+%license LICENSE
 %{_libdir}/clap/Dexed.clap
 
 %files vst3
+%doc README.md
+%license LICENSE
 %{_libdir}/vst3/Dexed.vst3/*
+
+%files lv2
+%doc README.md
+%license LICENSE
+%{_libdir}/lv2/Dexed.lv2/*
 
 %files
 %doc README.md
@@ -84,6 +91,11 @@ install %{builddest}/Standalone/Dexed %{buildroot}%{_bindir}/
 %{_bindir}/Dexed
 
 %changelog
+* Wed Mar 05 2025 Tim Lauridsen <tla@rasmil.dk> - 0.9.8-5
+- Added LV2 subpackage
+- do install code in Cmake
+- Add readme & license to sub packages
+- Build against pipewire jack
 * Fri Feb 21 2025 Tim Lauridsen <tla@rasmil.dk> - 0.9.8-4
 - Build with pre-build JUCE
 * Fri Feb 21 2025 Tim Lauridsen <tla@rasmil.dk> - 0.9.8-3
