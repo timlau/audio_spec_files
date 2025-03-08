@@ -100,6 +100,7 @@ clean-builddep:
 
 clean-build:
 	@rm -rf $(BUILDDIR)/BUILD
+	@rm -rf $(BUILDDIR)/RPMS
 
 
 
