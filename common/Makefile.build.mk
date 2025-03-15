@@ -103,5 +103,5 @@ clean-build:
 	@rm -rf $(BUILDDIR)/RPMS
 
 
-
-.PHONY: clean mockinst mockbuild coprbuild test-submodules
+.PHONY: clean mockinst mockbuild coprbuild test-submodules clone update_submodules copy_pactches update-gitdate
+.PHONY:	srpm localbuild mock-files mock-requires mock-provides clean-build clean-builddep clean-archive

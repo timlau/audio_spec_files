@@ -26,4 +26,5 @@ ifeq (,$(wildcard $(TAR_GZ)))
 else
 	@echo "Archive already exists: $(TAR_GZ)"
 endif
-.PHONY: all clean test
+
+.PHONY: show clean test
