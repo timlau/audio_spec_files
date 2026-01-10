@@ -1,18 +1,9 @@
-From c906e018a1c5762d03107293459131504c59e641 Mon Sep 17 00:00:00 2001
-From: Tim Lauridsen <tla@rasmil.dk>
-Date: Mon, 24 Feb 2025 08:57:17 +0100
-Subject: [PATCH 1/2] fix main install dirs
-
----
- CMakeLists.txt | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 57cb882f0..4251aad0f 100644
+index f8864a6dc5..dafc51a575 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -35,6 +35,7 @@ cmake_minimum_required(VERSION 3.22)
- project(JUCE VERSION 8.0.6 LANGUAGES C CXX)
+ project(JUCE VERSION 8.0.12 LANGUAGES C CXX)
  
  include(CMakeDependentOption)
 +include(GNUInstallDirs)
@@ -32,7 +23,7 @@ index 57cb882f0..4251aad0f 100644
  set(UTILS_INSTALL_DIR "${JUCE_INSTALL_DESTINATION}")
  set(JUCEAIDE_PATH "${JUCE_TOOL_INSTALL_DIR}/${JUCE_JUCEAIDE_NAME}")
  configure_package_config_file("${JUCE_CMAKE_UTILS_DIR}/JUCEConfig.cmake.in"
-@@ -181,14 +182,14 @@ if(("${CMAKE_SOURCE_DIR}" STREQUAL "${JUCE_SOURCE_DIR}") AND (NOT JUCE_BUILD_HEL
+@@ -181,7 +182,7 @@ if(("${CMAKE_SOURCE_DIR}" STREQUAL "${JUCE_SOURCE_DIR}") AND (NOT JUCE_BUILD_HEL
      _juce_add_lv2_manifest_helper_target()
  
      if(TARGET juce_lv2_helper)
@@ -40,15 +31,30 @@ index 57cb882f0..4251aad0f 100644
 +        install(TARGETS juce_lv2_helper EXPORT LV2_HELPER DESTINATION "${CMAKE_INSTALL_BINDIR}")
          install(EXPORT LV2_HELPER NAMESPACE juce:: DESTINATION "${JUCE_INSTALL_DESTINATION}")
      endif()
- 
-     _juce_add_vst3_manifest_helper_target()
- 
-     if(TARGET juce_vst3_helper)
--        install(TARGETS juce_vst3_helper EXPORT VST3_HELPER DESTINATION "bin/JUCE-${JUCE_VERSION}")
-+        install(TARGETS juce_vst3_helper EXPORT VST3_HELPER DESTINATION "${CMAKE_INSTALL_BINDIR}")
-         install(EXPORT VST3_HELPER NAMESPACE juce:: DESTINATION "${JUCE_INSTALL_DESTINATION}")
-     endif()
  endif()
--- 
-2.48.1
-
+diff --git a/extras/Build/juceaide/CMakeLists.txt b/extras/Build/juceaide/CMakeLists.txt
+index 17e5520974..1aa087ac26 100644
+--- a/extras/Build/juceaide/CMakeLists.txt
++++ b/extras/Build/juceaide/CMakeLists.txt
+@@ -168,7 +168,7 @@ else()
+ 
+     add_executable(juce::juceaide ALIAS juceaide)
+ 
+-    set(JUCE_TOOL_INSTALL_DIR "bin/JUCE-${JUCE_VERSION}" CACHE STRING
++    set(JUCE_TOOL_INSTALL_DIR "${CMAKE_INSTALL_BINDIR}" CACHE STRING
+         "The location, relative to the install prefix, where juceaide will be installed")
+ 
+     install(PROGRAMS "${imported_location}" DESTINATION "${JUCE_TOOL_INSTALL_DIR}")
+diff --git a/modules/CMakeLists.txt b/modules/CMakeLists.txt
+index db8a56774d..23c219927d 100644
+--- a/modules/CMakeLists.txt
++++ b/modules/CMakeLists.txt
+@@ -31,7 +31,7 @@
+ # ==============================================================================
+ 
+ juce_add_modules(
+-    INSTALL_PATH "include/JUCE-${JUCE_VERSION}/modules"
++    INSTALL_PATH "${CMAKE_INSTALL_INCLUDEDIR}/JUCE"
+     ALIAS_NAMESPACE juce
+     juce_analytics
+     juce_animation
