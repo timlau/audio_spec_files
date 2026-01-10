@@ -5,7 +5,7 @@ endif
 
 SRC_DIR = $(GIT_DIR)/$(PROJECT)
 DNF_BUILDDEP_INSTALLED = ${BUILDDIR}/DEPS_INSTALLED
-MOCK_REL = fedora-41-x86_64
+MOCK_REL = fedora-43-x86_64
 MOCK_RESULT = /var/lib/mock/${MOCK_REL}/result
 COPR_REPO = audio
 SUB_MODULES=$(shell sed -n 's/\tpath = //p' $(SRC_DIR)/.gitmodules)
