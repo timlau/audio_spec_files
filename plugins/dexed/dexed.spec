@@ -5,7 +5,7 @@
 
 Name:           dexed
 Version:        1.0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Standalone version of Dexed a synth that is closely modeled on the Yamaha DX7
 
 License:        GPLv3
@@ -91,6 +91,8 @@ This package contains Dexed as a LV2 plugin.
 %{_bindir}/Dexed
 
 %changelog
+* Sat Jan 10 2026 Tim Lauridsen <tla@rasmil.dk> - 1.0.1-2
+- use JUCE 8.0.6 (don't build with 8.0.12)
 * Tue Dec 23 2025 Tim Lauridsen <tla@rasmil.dk> - 1.0.1-1
 - version 1.0.1
 - update buildrequires pkgconfig(webkit2gtk-4.1)
