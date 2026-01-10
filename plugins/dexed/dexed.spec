@@ -4,8 +4,8 @@
 %global builddest redhat-linux-build/Source/Dexed_artefacts
 
 Name:           dexed
-Version:        0.9.8
-Release:        5%{?dist}
+Version:        1.0.1
+Release:        1%{?dist}
 Summary:        Standalone version of Dexed a synth that is closely modeled on the Yamaha DX7
 
 License:        GPLv3
@@ -21,12 +21,12 @@ Patch0:         0001-use-prebuild-juce.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pipewire-jack-audio-connection-kit-devel
-BuildRequires:  pkgconfig(alsa) 
+BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(x11) 
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  cmake(JUCE)
@@ -91,6 +91,9 @@ This package contains Dexed as a LV2 plugin.
 %{_bindir}/Dexed
 
 %changelog
+* Tue Dec 23 2025 Tim Lauridsen <tla@rasmil.dk> - 1.0.1-1
+- version 1.0.1
+- update buildrequires pkgconfig(webkit2gtk-4.1)
 * Wed Mar 05 2025 Tim Lauridsen <tla@rasmil.dk> - 0.9.8-5
 - Added LV2 subpackage
 - do install code in Cmake

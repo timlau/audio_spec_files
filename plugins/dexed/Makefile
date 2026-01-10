@@ -5,6 +5,8 @@ GIT_EXCLUDE = libs/JUCE
 # checkout git tagged version
 GIT_TAG = v$(VERSION)
 
+MOCK_REPO = https://download.copr.fedorainfracloud.org/results/timlau/audio/fedora-43-x86_64/
+
 ROOT = ../../common
 include $(ROOT)/Makefile.git.mk
 
