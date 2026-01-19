@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global gitdate .git20250303.c8d3861f
+%global gitdate .git20260110.265e9e22
 %global builddest redhat-linux-build/Odin2_artefacts/Release/
 %global buildname Odin2
 
 
 Name:           odin2
-Version:        2.3.4
+Version:        2.4.1
 Release:        1%{?gitdate}%{?dist}
 Summary:        Odin 2 is a 24-voice polyphonic powerhouse
 
@@ -16,17 +16,15 @@ URL:            https://github.com/TheWaveWarden/odin2
 # check here : https://github.com/timlau/spec_files/tree/master/plpugins/
 # for a Makefile that can be used to create the source tarball
 Source0:        %{name}-%{version}.tar.gz
-Patch0:         0001-use-prebuild-juce.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
 BuildRequires:  pipewire-jack-audio-connection-kit-devel
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  cmake(JUCE)
 
 
 %description
@@ -83,5 +81,7 @@ install %{builddest}/Standalone/%{buildname} %{buildroot}%{_bindir}/
 
 
 %changelog
+* Sat Jan 10 2026 Tim Lauridsen <tla@rasmil.dk> - 2.4.1-1
+- version 2.4.1
 * Sun Mar 02 2025 Tim Lauridsen <tla@rasmil.dk> - 2.3.4-1
 - Initial package
