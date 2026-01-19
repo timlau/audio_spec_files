@@ -2,14 +2,14 @@
 %global builddest bin
 
 Name:           JUCE
-Version:        8.0.12
+Version:        8.0.11
 Release:        1%{?dist}
 Summary:        JUCE is an open-source cross-platform C++ application framework
 
 License:        GPLv3+
 URL:            https://github.com/juce-framework/JUCE
 
-Source0:        https://github.com/juce-framework/%{name}/archive/refs/tags/%{version}.tar.gz
+Source0:        https://github.com/juce-framework/JUCE/archive/refs/tags/%{version}.tar.gz
 Patch0:         fix_cmake_paths.patch
 
 BuildRequires:  gcc-c++
@@ -38,10 +38,10 @@ BuildRequires:  pkgconfig(xcomposite)
 %description
 JUCE is an open-source cross-platform C++ application framework for creating desktop and mobile applications, including VST, VST3, AU, AUv3, AAX and LV2 audio plug-ins and plug-in hosts.
 
-%package -n lib%{name}-devel
+%package -n lib%{name}8-devel
 Summary:        JUCE is an open-source cross-platform C++ application framework
 
-%description -n lib%{name}-devel
+%description -n lib%{name}8-devel
 %{description}
 
 %prep
@@ -54,7 +54,7 @@ Summary:        JUCE is an open-source cross-platform C++ application framework
 %install
 %cmake_install --prefix %{_prefix}
 
-%files -n lib%{name}-devel
+%files -n lib%{name}8-devel
 %license LICENSE.md
 %doc README.md
 %{_bindir}/juce*
@@ -63,8 +63,8 @@ Summary:        JUCE is an open-source cross-platform C++ application framework
 
 
 %changelog
-* Sat Jan 10 2026 Tim Lauridsen <tla@rasmil.dk> - 8.0.12-1
-- Version 8.0.12
+* Sat Jan 10 2026 Tim Lauridsen <tla@rasmil.dk> - 8.0.11-1
+- Version 8.0.11
 - replace patches
 * Sun Feb 23 2025 Tim Lauridsen <tla@rasmil.dk> - 8.0.6-1
 - Initial package
