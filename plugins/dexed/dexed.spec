@@ -29,7 +29,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  cmake(JUCE)
+BuildRequires:  cmake(JUCE) = 8.0.6
 
 %description
 Dexed is a multi platform, multi format plugin synth that is closely modeled on the Yamaha DX7.
