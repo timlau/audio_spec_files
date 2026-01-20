@@ -1,4 +1,4 @@
-plugins/*/build/
+**/build/
 plugins/JUCE/test/CMakeFiles/
 plugins/JUCE/test/CMakeCache.txt
 plugins/JUCE/test/Makefile
