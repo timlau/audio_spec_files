@@ -49,7 +49,7 @@ Summary:        JUCE is an open-source cross-platform C++ application framework
 %autosetup -p1
 
 %build
-%cmake -DJUCE_INSTALL_DESTINATION=%{_libdir}/cmake/%{name} -DJUCE_MODULE_PATH=%{_includedir}/%{name} -DJUCE_TOOL_INSTALL_DIR=%{_bindir}
+%cmake -DJUCE_INSTALL_DESTINATION=%{_libdir}/cmake/%{name}-%{version} -DJUCE_MODULE_PATH=%{_includedir}/%{name}-%{version}/modules -DJUCE_TOOL_INSTALL_DIR=%{_bindir}
 %cmake_build
 
 %install
@@ -59,8 +59,8 @@ Summary:        JUCE is an open-source cross-platform C++ application framework
 %license LICENSE.md
 %doc README.md
 %{_bindir}/juce*
-%{_libdir}/cmake/%{name}/*
-%{_includedir}/%{name}/*
+%{_libdir}/cmake/%{name}-%{version}/*
+%{_includedir}/%{name}-%{version}/*
 
 
 %changelog
