@@ -59,8 +59,8 @@ Summary:        JUCE is an open-source cross-platform C++ application framework
 %license LICENSE.md
 %doc README.md
 %{_bindir}/juce*
-%{_libdir}/cmake/%{name}-%{version}/*
-%{_includedir}/%{name}-%{version}/*
+%{_libdir}/cmake/%{name}-%{version}/
+%{_includedir}/%{name}-%{version}/
 
 
 %changelog
