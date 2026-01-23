@@ -53,7 +53,7 @@ This package contains %{name} as a LV2 plugin.
 %autosetup -p1
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=Release
+%cmake -DCMAKE_BUILD_TYPE=Release -DODIN2_COPY_PLUGIN_AFTER_BUILD=FALSE
 %cmake_build --config Release
 
 %install
