@@ -16,13 +16,22 @@ clone:
 ifeq (,$(wildcard $(SRC_DIR)))
 	@echo "Cloning repository"
 	@git clone $(GIT_URL) $(SRC_DIR)
+ifdef GIT_BRANCH
+	@echo "--> Checkout branch: $(GIT_BRANCH)"	
+	@cd $(SRC_DIR); git checkout $(GIT_BRANCH)
+else
 ifdef GIT_TAG
 	@echo "--> Checking out git tag : $(GIT_TAG)"
 	@cd $(SRC_DIR); git checkout -b release $(GIT_TAG)
 else
 	@echo "--> No git tag specified, using master branch"
 endif	
+endif
+ifneq ($(SKIP_SUBMODULES),true)
 	@$(MAKE) -s update_submodules
+else
+	@echo "--> Skipping submodule update as per configuration"
+endif
 	@echo "Repository cloned into: $(SRC_DIR)"
 	@$(MAKE) -s update-gitdate
 endif
