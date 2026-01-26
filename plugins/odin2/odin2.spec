@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20260125.35fa33fa
+%global gitdate .git20260126.ea3d8a64
 %global builddest redhat-linux-build/Odin2_artefacts/Release/
 %global buildname Odin2
 
@@ -65,14 +65,7 @@ This package contains %{name} as a clap plugin.
 %cmake_build --config Release
 
 %install
-install -d -m 755 %{buildroot}%{_bindir}
-install -d -m 755 %{buildroot}%{_libdir}/vst3
-install -d -m 755 %{buildroot}%{_libdir}/lv2
-install -d -m 755 %{buildroot}%{_libdir}/clap
-cp -R %{builddest}/VST3/%{buildname}.vst3 %{buildroot}%{_libdir}/vst3/ 
-cp -R %{builddest}/LV2/%{buildname}.lv2 %{buildroot}%{_libdir}/lv2/ 
-install %{builddest}/CLAP/%{buildname}.clap %{buildroot}%{_libdir}/clap/
-install %{builddest}/Standalone/%{buildname} %{buildroot}%{_bindir}
+%cmake_install
 
 %files vst3
 %license LICENSE
