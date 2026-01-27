@@ -1,6 +1,6 @@
 %global debug_package %{nil}
 %global gitdate .git20260127.d02182c
-%global builddest obxf_products
+%global builddest redhat-linux-build/obxf_products
 %global buildname OB-Xf
 
 Name:           OB-Xf
@@ -56,6 +56,13 @@ Summary: LV2 plugin of %{name}
 %{description}
 This package contains %{name} as a LV2 plugin.
 
+%package data
+Summary: patches and themes for %{name}
+
+%description data
+%{description}
+This package patches and themes for %{name} 
+
 %prep
 %autosetup
 
@@ -90,6 +97,12 @@ install %{builddest}/%{buildname} %{buildroot}%{_bindir}
 %license LICENSE
 %doc README.md
 %{_libdir}/lv2/*.lv2/*
+
+%files data
+%license LICENSE
+%doc README.md
+%{_sharedir}/*
+
 
 %files 
 %license LICENSE
