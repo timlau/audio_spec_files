@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20260127.d02182c
+%global gitdate .git20260127.51471db
 %global builddest redhat-linux-build/obxf_products
 %global buildname OB-Xf
 
@@ -26,7 +26,10 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  cmake(fmt) 
+BuildRequires:  cmake(JUCE) = 8.0.11 
 
+Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description
 OB-Xf is a Synth based on the legendary Oberheim OB-X. 
@@ -37,6 +40,7 @@ we believe.
 
 %package clap
 Summary: CLAP plugin of %{name}
+Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description clap
 %{description}
@@ -44,6 +48,7 @@ This package contains AIDA-X as a CLAP plugin.
 
 %package vst3
 Summary: VST3 plugin of ½´%{name}
+Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description vst3
 %{description}
@@ -51,6 +56,7 @@ This package contains AIDA-X as a VST3 plugin.
 
 %package lv2
 Summary: LV2 plugin of %{name}
+Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description lv2
 %{description}
@@ -67,8 +73,8 @@ This package patches and themes for %{name}
 %autosetup
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=Release
-%cmake_build --config Release --target obxf-staged
+%cmake
+%cmake_build --target obxf-staged
 
 %install
 # install plugins and standalone
@@ -101,7 +107,7 @@ install %{builddest}/%{buildname} %{buildroot}%{_bindir}
 %files data
 %license LICENSE
 %doc README.md
-%{_sharedir}/*
+%{_datadir}/Surge Synth Team/OB-Xf/
 
 
 %files 
