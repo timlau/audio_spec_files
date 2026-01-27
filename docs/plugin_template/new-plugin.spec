@@ -1,6 +1,6 @@
 %global debug_package %{nil}
 %global gitdate .git20250222.a74ffd3
-%global builddest  {{ name }}_artefacts
+%global builddest  redhat-linux-build/{{ name }}_artefacts
 %global buildname {{ name }}
 
 Name:           {{ name }}
