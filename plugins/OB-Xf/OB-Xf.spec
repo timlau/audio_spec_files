@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20260127.51471db
+%global gitdate .git20260127.2828f95
 %global builddest redhat-linux-build/obxf_products
 %global buildname OB-Xf
 
@@ -73,8 +73,8 @@ This package patches and themes for %{name}
 %autosetup
 
 %build
-%cmake
-%cmake_build --target obxf-staged
+%cmake -DCMAKE_BUILD_TYPE=Release
+%cmake_build --config Release --target obxf-staged
 
 %install
 # install plugins and standalone
