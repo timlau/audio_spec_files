@@ -17,6 +17,8 @@ URL:            https://github.com/{{ github_owner }}/{{ github_project }}
 Source0:        %{name}-%{version}.tar.gz
 
 # Basic build requirements for a JUCE based plugin
+BuildRequires:  cmake
+BuildRequires:  git
 BuildRequires:  gcc-c++
 BuildRequires:  pipewire-jack-audio-connection-kit-devel
 BuildRequires:  pkgconfig(alsa)
@@ -37,14 +39,14 @@ Summary: CLAP plugin of %{name}
 
 %description clap
 %{description}
-This package contains AIDA-X as a CLAP plugin.
+This package contains %{name} as a CLAP plugin.
 
 %package vst3
 Summary: VST3 plugin of ½´%{name}
 
 %description vst3
 %{description}
-This package contains AIDA-X as a VST3 plugin.
+This package contains %{name} as a VST3 plugin.
 
 %package lv2
 Summary: LV2 plugin of %{name}
