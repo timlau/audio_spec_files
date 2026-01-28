@@ -75,9 +75,9 @@ endif
 mockbuild: srpm
 	@echo "Building RPM in mock"
 ifdef MOCK_REPO
-	@mock -r $(MOCK_REL) --rebuild $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm -a $(MOCK_REPO)
+	@mock -r $(MOCK_REL) --rebuild $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm -a $(MOCK_REPO) --enable-network
 else
-	@mock -r $(MOCK_REL) --rebuild $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm
+	@mock -r $(MOCK_REL) --rebuild $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm --enable-network
 endif	
 	@echo "--> Build RPMs"
 	@tree -P *.rpm -I *.src.rpm $(MOCK_RESULT)
