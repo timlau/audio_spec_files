@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20250223.bcbffe53
+%global gitdate .git20260127.99c1981c
 %global builddest bin
 
 Name:           surge-xt

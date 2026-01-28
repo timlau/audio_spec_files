@@ -1,5 +1,9 @@
 %global debug_package %{nil}
+<<<<<<< HEAD
 %global gitdate .git20260128.9cc6a05
+=======
+%global gitdate .git20260127.721f084
+>>>>>>> 1df7e1d (+ rebuilds)
 %global builddest redhat-linux-build/obxf_products
 %global buildname OB-Xf
 
