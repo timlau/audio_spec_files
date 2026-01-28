@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20260127.2828f95
+%global gitdate .git20260128.9cc6a05
 %global builddest redhat-linux-build/obxf_products
 %global buildname OB-Xf
 
@@ -16,6 +16,8 @@ URL:            https://github.com/surge-synthesizer/OB-Xf
 # for a Makefile that can be used to create the source tarball
 Source0:        %{name}-%{version}.tar.gz
 
+BuildRequires:  cmake
+BuildRequires:  git
 BuildRequires:  gcc-c++
 BuildRequires:  pipewire-jack-audio-connection-kit-devel
 BuildRequires:  pkgconfig(alsa)
@@ -44,7 +46,7 @@ Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description clap
 %{description}
-This package contains AIDA-X as a CLAP plugin.
+This package contains %{name} as a CLAP plugin.
 
 %package vst3
 Summary: VST3 plugin of ½´%{name}
@@ -52,7 +54,7 @@ Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description vst3
 %{description}
-This package contains AIDA-X as a VST3 plugin.
+This package contains %{name} as a VST3 plugin.
 
 %package lv2
 Summary: LV2 plugin of %{name}
@@ -73,7 +75,7 @@ This package patches and themes for %{name}
 %autosetup
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=Release
+%cmake -DCMAKE_BUILD_TYPE=Release -DCPM_USE_LOCAL_PACKAGES=ON
 %cmake_build --config Release --target obxf-staged
 
 %install
@@ -107,7 +109,7 @@ install %{builddest}/%{buildname} %{buildroot}%{_bindir}
 %files data
 %license LICENSE
 %doc README.md
-%{_datadir}/Surge Synth Team/OB-Xf/
+%{_datadir}/*/OB-Xf/
 
 
 %files 
