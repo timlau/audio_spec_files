@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20250222.a74ffd3
+%global gitdate .git20260127.a74ffd3
 %global builddest bin
 
 Name:           dragonfly-reverb
@@ -33,21 +33,21 @@ Summary: CLAP plugin of %{name}
 
 %description clap
 %{description}
-This package contains AIDA-X as a CLAP plugin.
+This package contains %{name} as a CLAP plugin.
 
 %package vst3
 Summary: VST3 plugin of ½´%{name}
 
 %description vst3
 %{description}
-This package contains AIDA-X as a VST3 plugin.
+This package contains %{name} as a VST3 plugin.
 
 %package lv2
 Summary: LV2 plugin of %{name}
 
 %description lv2
 %{description}
-This package contains AIDA-X as a LV2 plugin.
+This package contains %{name} as a LV2 plugin.
 
 %prep
 %autosetup

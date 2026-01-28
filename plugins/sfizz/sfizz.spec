@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20250221.93da042
+%global gitdate .git20260127.5e0be2e
 
 Name:           sfizz
 Version:        1.2.3

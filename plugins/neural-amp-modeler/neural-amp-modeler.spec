@@ -1,8 +1,8 @@
 %global debug_package %{nil}
-%global gitdate .git20250222.9a60937
+%global gitdate .git20260127.5a5865a
 
 Name:           neural-amp-modeler
-Version:        0.1.7
+Version:        0.1.9
 Release:        1%{?gitdate}%{?dist}
 Summary:        LV2 plugin for using neural network machine learning amp models
 

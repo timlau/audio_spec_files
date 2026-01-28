@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20250222.41eb988
+%global gitdate .git20260127.41eb988
 %global builddest redhat-linux-build/bin
 
 Name:           AIDA-X
