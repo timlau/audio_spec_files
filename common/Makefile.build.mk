@@ -12,7 +12,7 @@ SUB_MODULES=$(shell sed -n 's/\tpath = //p' $(SRC_DIR)/.gitmodules)
 NAME = $(shell git config --get user.name)
 EMAIL = $(shell git config --get user.email)
 PACKAGER = $(NAME) <$(EMAIL)>
-RPMBUILD_OPTS = -D '_topdir $(BUILDDIR)' -D 'packager $(PACKAGER)'
+RPMBUILD_OPTS = --define '_topdir $(BUILDDIR)' --define 'packager $(PACKAGER)'
 
 all: srpm
 
@@ -67,7 +67,7 @@ update-gitdate:
 srpm: archive
 	@echo "Building SRPM"
 	@rm -rf $(BUILDDIR)/SRPMS
-	@rpmbuild $(RPMBUILD_OPTS) -bs $(PROJECT).spec
+	rpmbuild $(RPMBUILD_OPTS) -bs $(PROJECT).spec
 .PHONY: srpm
 
 localbuild: srpm

@@ -1,7 +1,8 @@
 %global debug_package %{nil}
-%global gitdate .git20260129.b780eae
+%global gitdate .git20260129.d9e3553
 %global builddest redhat-linux-build/obxf_products
 %global buildname OB-Xf
+%global git_hash b780eae
 
 Name:           OB-Xf
 Version:        0.9.27
@@ -75,7 +76,7 @@ This package patches and themes for %{name}
 %autosetup
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=Release -DCPM_USE_LOCAL_PACKAGES=ON
+%cmake -DCMAKE_BUILD_TYPE=Release -DCPM_USE_LOCAL_PACKAGES=ON -DGIT_COMMIT_HASH=%{git_hash}
 %cmake_build --config Release --target obxf-staged
 
 %install
