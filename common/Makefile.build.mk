@@ -9,6 +9,10 @@ MOCK_REL = fedora-43-x86_64
 MOCK_RESULT = /var/lib/mock/${MOCK_REL}/result
 COPR_REPO = audio
 SUB_MODULES=$(shell sed -n 's/\tpath = //p' $(SRC_DIR)/.gitmodules)
+NAME = $(shell git config --get user.name)
+EMAIL = $(shell git config --get user.email)
+PACKAGER = $(NAME) <$(EMAIL)>
+RPMBUILD_OPTS = -D '_topdir $(BUILDDIR)' -D 'packager $(PACKAGER)'
 
 all: srpm
 
@@ -17,7 +21,7 @@ ifeq (,$(wildcard $(SRC_DIR)))
 	@echo "Cloning repository"
 	@git clone $(GIT_URL) $(SRC_DIR)
 ifdef GIT_BRANCH
-	@echo "--> Checkout branch: $(GIT_BRANCH)"	
+	@echo "--> Checkout branch: $(GIT_BRANCH)"
 	@cd $(SRC_DIR); git checkout $(GIT_BRANCH)
 else
 ifdef GIT_TAG
@@ -25,7 +29,7 @@ ifdef GIT_TAG
 	@cd $(SRC_DIR); git checkout -b release $(GIT_TAG)
 else
 	@echo "--> No git tag specified, using master branch"
-endif	
+endif
 endif
 ifneq ($(SKIP_SUBMODULES),true)
 	@$(MAKE) -s update_submodules
@@ -59,7 +63,7 @@ update-gitdate:
 srpm: archive
 	@echo "Building SRPM"
 	@rm -rf $(BUILDDIR)/SRPMS
-	@rpmbuild --define '_topdir $(BUILDDIR)' -bs $(PROJECT).spec
+	@rpmbuild $(RPMBUILD_OPTS) -bs $(PROJECT).spec
 
 
 localbuild: srpm
@@ -67,10 +71,10 @@ localbuild: srpm
 ifeq (,$(wildcard $(DNF_BUILDDEP_INSTALLED)))
 	@sudo dnf builddep -y ${PROJECT}.spec
 	@touch $(DNF_BUILDDEP_INSTALLED)
-endif	
-	@rpmbuild --define "_topdir $(BUILDDIR)" -ba ${PROJECT}.spec
+endif
+	@rpmbuild $(RPMBUILD_OPTS) -ba ${PROJECT}.spec
 	@echo "--> Build RPMs"
-	@tree -P *.rpm -I *.src.rpm $(BUILDDIR)/RPMS	
+	@tree -P *.rpm -I *.src.rpm $(BUILDDIR)/RPMS
 
 mockbuild: srpm
 	@echo "Building RPM in mock"
@@ -78,7 +82,7 @@ ifdef MOCK_REPO
 	@mock -r $(MOCK_REL) --rebuild $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm -a $(MOCK_REPO) --enable-network
 else
 	@mock -r $(MOCK_REL) --rebuild $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm --enable-network
-endif	
+endif
 	@echo "--> Build RPMs"
 	@tree -P *.rpm -I *.src.rpm $(MOCK_RESULT)
 
