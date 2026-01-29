@@ -1,16 +1,12 @@
 %global debug_package %{nil}
-<<<<<<< HEAD
 %global gitdate .git20260128.9cc6a05
-=======
-%global gitdate .git20260127.721f084
->>>>>>> 1df7e1d (+ rebuilds)
 %global builddest redhat-linux-build/obxf_products
 %global buildname OB-Xf
 
 Name:           OB-Xf
 Version:        0.9.27
-Release:        1%{?gitdate}%{?dist}
-Summary:        OB-Xf is a Synth based on the legendary Oberheim OB-X. 
+Release:        %autorelease%{?gitdate}%{?dist}
+Summary:        OB-Xf is a Synth based on the legendary Oberheim OB-X.
 
 License:        GPLv3+
 URL:            https://github.com/surge-synthesizer/OB-Xf
@@ -32,13 +28,13 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  cmake(fmt) 
-BuildRequires:  cmake(JUCE) = 8.0.11 
+BuildRequires:  cmake(fmt)
+BuildRequires:  cmake(JUCE) = 8.0.11
 
 Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description
-OB-Xf is a Synth based on the legendary Oberheim OB-X. 
+OB-Xf is a Synth based on the legendary Oberheim OB-X.
 OB-Xf is a continuation of the last open source version of OB-Xd by 2DaT and later discoDSP,
 bringing together several efforts going on in the audio space and combining them inside the Surge Synth Team infrastructure.
 The synth is currently in a beta phase, with a few features still under development, but the plugin is feature stable and working rather well,
@@ -73,7 +69,7 @@ Summary: patches and themes for %{name}
 
 %description data
 %{description}
-This package patches and themes for %{name} 
+This package patches and themes for %{name}
 
 %prep
 %autosetup
@@ -88,8 +84,8 @@ install -d -m 755 %{buildroot}%{_bindir}
 install -d -m 755 %{buildroot}%{_libdir}/vst3
 install -d -m 755 %{buildroot}%{_libdir}/lv2
 install -d -m 755 %{buildroot}%{_libdir}/clap
-cp -R %{builddest}/%{buildname}.vst3 %{buildroot}%{_libdir}/vst3/ 
-cp -R %{builddest}/%{buildname}.lv2 %{buildroot}%{_libdir}/lv2/ 
+cp -R %{builddest}/%{buildname}.vst3 %{buildroot}%{_libdir}/vst3/
+cp -R %{builddest}/%{buildname}.lv2 %{buildroot}%{_libdir}/lv2/
 install %{builddest}/%{buildname}.clap %{buildroot}%{_libdir}/clap/
 install %{builddest}/%{buildname} %{buildroot}%{_bindir}
 # install themes and patches
@@ -116,12 +112,10 @@ install %{builddest}/%{buildname} %{buildroot}%{_bindir}
 %{_datadir}/*/OB-Xf/
 
 
-%files 
+%files
 %license LICENSE
 %doc README.md
 %{_bindir}/*
 
-
 %changelog
-* Tue Jan 27 2026 Tim Lauridsen <tla@rasmil.dk> - 0.9.27-1
-- Initial package
+%autochangelog
