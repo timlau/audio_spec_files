@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global gitdate .git20260126.ea3d8a64
+%global gitdate .git20260129.c7bd6ae0
 %global builddest redhat-linux-build/Odin2_artefacts/Release/
 %global buildname Odin2
 
 Name:           odin2
 Version:        2.4.1
-Release:        1%{?gitdate}%{?dist}
+Release:        %autorelease%{?gitdate}%{?dist}
 Summary:        Odin 2 is a 24-voice polyphonic powerhouse
 
 License:        GPLv3+
@@ -31,13 +31,13 @@ BuildRequires:  cmake(JUCE) = 8.0.11
 %description
 Odin 2 is a 24-voice polyphonic powerhouse that will transport you from your studio straight to Valhalla.
 Whether you're after earth-shattering basses, soaring leads, or otherworldly FX, Odin 2 delivers it all.
-Harness the classic warmth of analog waveforms — or draw custom ones. 
-High-quality emulations of legendary analog filters, like the Moog Ladder, the Korg 35 and many more let you shape your sound. 
-Finish it off with five onboard FX or dive into endless modulation possibilities. 
+Harness the classic warmth of analog waveforms — or draw custom ones.
+High-quality emulations of legendary analog filters, like the Moog Ladder, the Korg 35 and many more let you shape your sound.
+Finish it off with five onboard FX or dive into endless modulation possibilities.
 There’s a whole world to explore in Odin 2.
 
 %package vst3
-Summary: VST3 plugin of ½´%{name} 
+Summary: VST3 plugin of ½´%{name}
 
 %description vst3
 %{description}
@@ -61,7 +61,7 @@ This package contains %{name} as a clap plugin.
 %autosetup -p1
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=Release -DODIN2_COPY_PLUGIN_AFTER_BUILD=FALSE  -DCPM_USE_LOCAL_PACKAGES=ON 
+%cmake -DCMAKE_BUILD_TYPE=Release -DODIN2_COPY_PLUGIN_AFTER_BUILD=FALSE  -DCPM_USE_LOCAL_PACKAGES=ON
 %cmake_build --config Release
 
 %install
@@ -82,14 +82,10 @@ This package contains %{name} as a clap plugin.
 %doc README.md
 %{_libdir}/clap/%{buildname}.clap
 
-%files 
+%files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{buildname}
 
-
 %changelog
-* Sat Jan 10 2026 Tim Lauridsen <tla@rasmil.dk> - 2.4.1-1
-- version 2.4.1
-* Sun Mar 02 2025 Tim Lauridsen <tla@rasmil.dk> - 2.3.4-1
-- Initial package
+%autochangelog
