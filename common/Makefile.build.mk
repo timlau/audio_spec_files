@@ -77,9 +77,13 @@ ifeq (,$(wildcard $(DNF_BUILDDEP_INSTALLED)))
 	@touch $(DNF_BUILDDEP_INSTALLED)
 endif
 	@rpmbuild $(RPMBUILD_OPTS) -ba ${PROJECT}.spec
+	@$(MAKE) -s show-rpms
+.PHONY: localbuild
+
+show-rpms:
 	@echo "--> Build RPMs"
 	@tree -P *.rpm -I *.src.rpm $(BUILDDIR)/RPMS
-.PHONY: localbuild
+.PHONY: show-rpms
 
 mockbuild: srpm
 	@echo "Building RPM in mock"
