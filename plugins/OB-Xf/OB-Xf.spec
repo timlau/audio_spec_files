@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20260128.9cc6a05
+%global gitdate .git20260129.b780eae
 %global builddest redhat-linux-build/obxf_products
 %global buildname OB-Xf
 
