@@ -5,7 +5,7 @@
 
 Name:           Crypt2
 Version:        2.1.0
-Release:        1%{?gitdate}%{?dist}
+Release:        %autorelease%{?gitdate}%{?dist}
 Summary:        Crypt is a software synthesiser plugin designed for creating spacious cold hyper-unisoned synth sounds
 
 License:        GPLv3+
@@ -40,14 +40,14 @@ Summary: CLAP plugin of %{name}
 
 %description clap
 %{description}
-This package contains Crypt2 as a CLAP plugin.
+This package contains %{name} as a CLAP plugin.
 
 %package vst3
-Summary: VST3 plugin of ½´%{name}
+Summary: VST3 plugin of %{name}
 
 %description vst3
 %{description}
-This package contains Crypt2 as a VST3 plugin.
+This package contains %{name} as a VST3 plugin.
 
 %package lv2
 Summary: LV2 plugin of %{name}
@@ -81,12 +81,10 @@ This package contains %{name} as a LV2 plugin.
 %doc README.md
 %{_libdir}/lv2/*.lv2/*
 
-%files 
+%files
 %license COPYING
 %doc README.md
 %{_bindir}/*
 
-
 %changelog
-* Wed Jan 28 2026 Tim Lauridsen <tla@rasmil.dk> - 2.1.0-1
-- Initial package
+%autochangelog
