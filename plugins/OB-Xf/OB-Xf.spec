@@ -49,7 +49,7 @@ Requires: %{name}-data%{?_isa} = %{version}-%{release}
 This package contains %{name} as a CLAP plugin.
 
 %package vst3
-Summary: VST3 plugin of ½´%{name}
+Summary: VST3 plugin of %{name}
 Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description vst3
