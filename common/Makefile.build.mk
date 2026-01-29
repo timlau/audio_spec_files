@@ -39,6 +39,7 @@ endif
 	@echo "Repository cloned into: $(SRC_DIR)"
 	@$(MAKE) -s update-gitdate
 endif
+.PHONY: clone
 
 update_submodules:
 	@for module in $(SUB_MODULES); do \
@@ -47,6 +48,7 @@ update_submodules:
 			cd $(SRC_DIR); git submodule update --init --recursive $$module; \
 		fi \
 	done
+.PHONY: update_submodules
 
 copy_pactches:
 ifneq (,$(wildcard $(CURDIR)/*.patch))
@@ -54,17 +56,19 @@ ifneq (,$(wildcard $(CURDIR)/*.patch))
 	@echo $(wildcard $(CURDIR)/*.patch)
 	@cp $(CURDIR)/*.patch ${BUILDDIR}/SOURCES
 endif
+.PHONY: copy_patches
 
 update-gitdate:
 	$(eval GITDATE := .git$(shell date +%Y%m%d).$(shell git -C $(SRC_DIR) rev-parse --short HEAD))
 	@echo "Updating spec file with git date : $(GITDATE)"
 	@sed -i -e "s/\.git[0-9]*\.[0-9a-f]*/$(GITDATE)/" $(PROJECT).spec
+.PHONY: update-gitdate
 
 srpm: archive
 	@echo "Building SRPM"
 	@rm -rf $(BUILDDIR)/SRPMS
 	@rpmbuild $(RPMBUILD_OPTS) -bs $(PROJECT).spec
-
+.PHONY: srpm
 
 localbuild: srpm
 	@echo "Building RPM locally"
@@ -75,6 +79,7 @@ endif
 	@rpmbuild $(RPMBUILD_OPTS) -ba ${PROJECT}.spec
 	@echo "--> Build RPMs"
 	@tree -P *.rpm -I *.src.rpm $(BUILDDIR)/RPMS
+.PHONY: localbuild
 
 mockbuild: srpm
 	@echo "Building RPM in mock"
@@ -85,36 +90,42 @@ else
 endif
 	@echo "--> Build RPMs"
 	@tree -P *.rpm -I *.src.rpm $(MOCK_RESULT)
+.PHONY: mockbuild
 
 mock-files:
 	find $(MOCK_RESULT) -name *64.rpm -print -exec rpm -qlp {} \;
+.PHONY: mock-files
 
 mock-provides:
 	find $(MOCK_RESULT) -name *64.rpm -print -exec rpm -qp --provides {} \;
+.PHONY: mock-provides
 
 mock-requires:
 	find $(MOCK_RESULT) -name *64.rpm -print -exec rpm -qp --requires {} \;
+.PHONY: mock-requires
 
 mockinst:
 	@sudo dnf install $(MOCK_RESULT)/$(PROJECT)*-$(VERSION)*.x86_64.rpm
+.PHONY: mockinst
 
 coprbuild: srpm
 	@echo "Building RPM in copr"
 	@copr-cli build --nowait $(COPR_REPO) $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm
+.PHONY: coprbuild
 
 clean:
 	@rm -rf $(BUILDDIR)
+.PHONY: clean
 
 clean-archive:
 	@rm -rf $(BUILDDIR)/SOURCES/*
+.PHONY: clean-archive
 
 clean-builddep:
 	@rm -f $(DNF_BUILDDEP_INSTALLED)
+.PHONY: clean-builddep
 
 clean-build:
 	@rm -rf $(BUILDDIR)/BUILD
 	@rm -rf $(BUILDDIR)/RPMS
-
-
-.PHONY: clean mockinst mockbuild coprbuild test-submodules clone update_submodules copy_pactches update-gitdate
-.PHONY:	srpm localbuild mock-files mock-requires mock-provides clean-build clean-builddep clean-archive
+.PHONY: cleam-build

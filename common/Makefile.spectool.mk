@@ -18,6 +18,7 @@ ifeq (,$(wildcard $(TAR_GZ)))
 	@echo "Archive created : $(TAR_GZ)"
 	@$(MAKE) -s copy_pactches
 endif
+.PHONY: archive
 
 show:
 	@echo "Project           : $(PROJECT)"
@@ -28,8 +29,6 @@ show:
 	@echo "Mock release      : $(MOCK_REL)"
 	@echo "Copr repository   : $(COPR_REPO)"
 	@echo "Source            : spectool download"
-
-
-.PHONY: archive clone show
+.PHONY: show
 
 include $(ROOT)/Makefile.build.mk

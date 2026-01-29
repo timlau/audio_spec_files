@@ -11,7 +11,7 @@ TAR_GZ = ${BUILDDIR}/SOURCES/$(PROJECT)-$(VERSION).tar.gz
 
 
 all: srpm
-	
+
 archive: clone
 ifeq (, $(wildcard $(TAR_GZ)))
 	@echo "Creating archive: $(TAR_GZ)"
@@ -20,6 +20,7 @@ ifeq (, $(wildcard $(TAR_GZ)))
 	@echo "Archive created : $(TAR_GZ)"
 	@$(MAKE) -s copy_pactches
 endif
+.PHONY: archive
 
 show:
 	@echo "Project           : $(PROJECT)"
@@ -36,7 +37,6 @@ ifdef GIT_TAG
 else
 	@echo "Source            : git checkout - HEAD"
 endif
-
-.PHONY: archive show
+.PHONY: show
 
 include $(ROOT)/Makefile.build.mk
