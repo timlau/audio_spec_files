@@ -5,8 +5,8 @@
 
 Name:           {{ name }}
 Version:        {{ version }}
-Release:        1%{?gitdate}%{?dist}
-Summary:        
+Release:        %autorelease%{?gitdate}%{?dist}
+Summary:
 
 License:        GPLv3+
 URL:            https://github.com/{{ github_owner }}/{{ github_project }}
@@ -59,7 +59,7 @@ This package contains %{name} as a LV2 plugin.
 %autosetup
 
 %build
-%cmake 
+%cmake
 %cmake_build
 
 %install
@@ -67,8 +67,8 @@ This package contains %{name} as a LV2 plugin.
 # install -d -m 755 %{buildroot}%{_libdir}/vst3
 # install -d -m 755 %{buildroot}%{_libdir}/lv2
 # install -d -m 755 %{buildroot}%{_libdir}/clap
-# cp -R %{builddest}/VST3/%{buildname}.vst3 %{buildroot}%{_libdir}/vst3/ 
-# cp -R %{builddest}/LV2/%{buildname}.lv2 %{buildroot}%{_libdir}/lv2/ 
+# cp -R %{builddest}/VST3/%{buildname}.vst3 %{buildroot}%{_libdir}/vst3/
+# cp -R %{builddest}/LV2/%{buildname}.lv2 %{buildroot}%{_libdir}/lv2/
 # install %{builddest}/CLAP/%{buildname}.clap %{buildroot}%{_libdir}/clap/
 # install %{builddest}/Standalone/%{buildname} %{buildroot}%{_bindir}
 %cmake_install
@@ -88,12 +88,11 @@ This package contains %{name} as a LV2 plugin.
 %doc README.md
 %{_libdir}/lv2/*.lv2/*
 
-%files 
+%files
 %license LICENSE
 %doc README.md
 %{_bindir}/*
 
 
 %changelog
-* {{ changelog_date }} Tim Lauridsen <tla@rasmil.dk> - {{ version }}-1
-- Initial package
+%autochangelog
