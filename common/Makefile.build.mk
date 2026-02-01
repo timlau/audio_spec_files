@@ -13,6 +13,7 @@ NAME = $(shell git config --get user.name)
 EMAIL = $(shell git config --get user.email)
 PACKAGER = $(NAME) <$(EMAIL)>
 RPMBUILD_OPTS = --define '_topdir $(BUILDDIR)' --define 'packager $(PACKAGER)'
+CMAKE_GZ = ${BUILDDIR}/SOURCES/cmake_preset.tar.gz
 
 all: srpm
 
@@ -57,6 +58,13 @@ ifneq (,$(wildcard $(CURDIR)/*.patch))
 	@cp $(CURDIR)/*.patch ${BUILDDIR}/SOURCES
 endif
 .PHONY: copy_patches
+
+copy_cmake_preset:
+ifneq (,$(wildcard $(CURDIR)/CMakeUserPresets.json))
+	@echo "--> Adding CMakeUserPresets.json to $(CMAKE_GZ)"
+	@cd $(CURDIR) && echo CMakeUserPresets.json | tar caf $(CMAKE_GZ) --ignore-failed-read --verbatim-files-from -T-
+endif
+.PHONY: copy_cmake_preset
 
 update-gitdate:
 	$(eval GITDATE := .git$(shell date +%Y%m%d).$(shell git -C $(SRC_DIR) rev-parse --short HEAD))

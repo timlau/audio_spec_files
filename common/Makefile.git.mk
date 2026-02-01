@@ -19,6 +19,7 @@ ifeq (, $(wildcard $(TAR_GZ)))
 	@cd $(SRC_DIR); git ls-files --recurse-submodules | tar caf $(TAR_GZ) --ignore-failed-read --xform s:^:$(PROJECT)-$(VERSION)/: --verbatim-files-from -T-
 	@echo "Archive created : $(TAR_GZ)"
 	@$(MAKE) -s copy_pactches
+	@$(MAKE) -s copy_cmake_preset
 endif
 .PHONY: archive
 

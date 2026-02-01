@@ -12,14 +12,19 @@ License:        GPLv3+
 URL:            https://github.com/{{ github_owner }}/{{ github_project }}
 
 # The source for this package was pulled from upstream's vcs.
-# check here : https://github.com/timlau/spec_files/tree/master/plpugins/
+# check here : https://github.com/timlau/audio_spec_files/
 # for a Makefile that can be used to create the source tarball
 Source0:        %{name}-%{version}.tar.gz
+# >>>>>>>>> REMOVE THIS is there is custom CMakeUuserPresets.json
+# add a second source with a custom CMakeUuserPresets.json
+Source1:        cmake_preset.tar.gz
+# <<<<<<<<<
 
 # Basic build requirements for a JUCE based plugin
 BuildRequires:  cmake
 BuildRequires:  git
 BuildRequires:  gcc-c++
+BuildRequires:  ninja-build
 BuildRequires:  pipewire-jack-audio-connection-kit-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(freetype2)
@@ -29,6 +34,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  cmake(juce) = 8.0.11
 
 
 
@@ -57,6 +63,10 @@ This package contains %{name} as a LV2 plugin.
 
 %prep
 %autosetup
+# >>>>>>>>> REMOVE THIS is there is custom CMakeUuserPresets.json
+# unpack the custom CMakeUuserPresets.json in same directory as the primary source
+%setup -T -D -a 1
+# <<<<<<<<<
 
 %build
 %cmake
