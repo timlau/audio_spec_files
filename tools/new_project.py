@@ -36,6 +36,7 @@ template_data = {
 template_files = [
     Path("./docs/plugin_template/new-plugin.spec"),
     Path("./docs/plugin_template/Makefile"),
+    Path("./docs/plugin_template/CMakeUserPresets.json"),
 ]
 
 output_path = Path(f"./plugins/{args.name}")
@@ -67,4 +68,3 @@ for template_file_path in template_files:
         file.write(rendered_content)
 
     print(f"new project file saved to {output_file_path}")
-
