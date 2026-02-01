@@ -28,7 +28,7 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xrender)
-BuildRequires:  pkgconfig(alsa) 
+BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gl)
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(xcomposite)
 
 %description
-Surge XT is a free and open-source hybrid synthesizer, Featuring many synthesis techniques, a great selection of filters, a flexible modulation engine, a smorgasbord of effects, and modern features like MPE, microtuning (with MTS-ESP support), and comprehensive Open Sound Control (OSC) support. 
+Surge XT is a free and open-source hybrid synthesizer, Featuring many synthesis techniques, a great selection of filters, a flexible modulation engine, a smorgasbord of effects, and modern features like MPE, microtuning (with MTS-ESP support), and comprehensive Open Sound Control (OSC) support.
 
 %package clap
 Summary: CLAP plugin of %{name}
@@ -66,8 +66,8 @@ This package contains %{name} as a LV2 plugin.
 %autosetup
 
 %build
-%cmake 
-%cmake_build --config Release --target surge-staged-assets
+cmake -DENABLE_TESTS=OFF -DCMAKE_BUILD_TYPE=Release -Wno-dev -B redhat-linux-build
+cmake --build redhat-linux-build --config Release --target surge-staged-assets
 
 %install
 %cmake_install
@@ -87,7 +87,7 @@ This package contains %{name} as a LV2 plugin.
 %doc README.md
 %{_libdir}/lv2/*.lv2/*
 
-%files 
+%files
 %license LICENSE
 %doc README.md
 %{_bindir}/*
