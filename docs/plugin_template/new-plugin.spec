@@ -1,12 +1,12 @@
 %global debug_package %{nil}
 %global gitdate .git20250222.a74ffd3
-%global builddest  redhat-linux-build/{{ name }}_artefacts
+%global builddest  redhat-linux-build/{{ name }}_artefacts/Release
 %global buildname {{ name }}
 
 Name:           {{ name }}
 Version:        {{ version }}
 Release:        %autorelease%{?gitdate}%{?dist}
-Summary:
+Summary:        # TODO: Insert summary here
 
 License:        GPLv3+
 URL:            https://github.com/{{ github_owner }}/{{ github_project }}
@@ -15,7 +15,7 @@ URL:            https://github.com/{{ github_owner }}/{{ github_project }}
 # check here : https://github.com/timlau/audio_spec_files/
 # for a Makefile that can be used to create the source tarball
 Source0:        %{name}-%{version}.tar.gz
-# >>>>>>>>> REMOVE THIS is there is custom CMakeUuserPresets.json
+# >>>>>>>>> TODO: REMOVE THIS is there is custom CMakeUuserPresets.json
 # add a second source with a custom CMakeUuserPresets.json
 Source1:        cmake_preset.tar.gz
 # <<<<<<<<<
@@ -39,40 +39,39 @@ BuildRequires:  cmake(juce) = 8.0.11
 
 
 %description
+# TODO: Insert description here
 
 %package clap
 Summary: CLAP plugin of %{name}
 
 %description clap
-%{description}
 This package contains %{name} as a CLAP plugin.
 
 %package vst3
-Summary: VST3 plugin of ½´%{name}
+Summary: VST3 plugin of %{name}
 
 %description vst3
-%{description}
 This package contains %{name} as a VST3 plugin.
 
 %package lv2
 Summary: LV2 plugin of %{name}
 
 %description lv2
-%{description}
 This package contains %{name} as a LV2 plugin.
 
 %prep
 %autosetup
-# >>>>>>>>> REMOVE THIS is there is custom CMakeUuserPresets.json
+# >>>>>>>>> TODO: REMOVE THIS is there is custom CMakeUuserPresets.json
 # unpack the custom CMakeUuserPresets.json in same directory as the primary source
 %setup -T -D -a 1
 # <<<<<<<<<
 
 %build
-%cmake
-%cmake_build
+%cmake --preset rpmbuild
+%cmake_build --preset rpmbuild
 
 %install
+# Manual install of plugins into buildroot
 # install -d -m 755 %{buildroot}%{_bindir}
 # install -d -m 755 %{buildroot}%{_libdir}/vst3
 # install -d -m 755 %{buildroot}%{_libdir}/lv2
