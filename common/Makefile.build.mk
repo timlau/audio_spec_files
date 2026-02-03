@@ -19,7 +19,7 @@ all: srpm
 
 clone:
 ifeq (,$(wildcard $(SRC_DIR)))
-	@echo "Cloning repository"
+	@echo "--> Cloning repository : $(GIT_URL)"
 	@git clone $(GIT_URL) $(SRC_DIR)
 ifdef GIT_BRANCH
 	@echo "--> Checkout branch: $(GIT_BRANCH)"
