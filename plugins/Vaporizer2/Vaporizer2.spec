@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(fftw3f)
 BuildRequires:  cmake(juce) = 8.0.11
 
-
+Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description
 Vaporizer2 is a hybrid wavetable additive / subtractive synthesizer / sampler workstation.
