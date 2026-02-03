@@ -1,0 +1,33 @@
+{
+  "$schema": "https://cmake.org/cmake/help/latest/_downloads/3e2d73bff478d88a7de0de736ba5e361/schema.json",
+  "version": 10,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 31
+  },
+  "configurePresets": [
+    {
+      "name": "rpmbuild",
+      "displayName": "RPM Build",
+      "description": "RPM build using Ninja generator",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CPM_USE_LOCAL_PACKAGES": "ON",
+        "USE_SYSTEM_JUCE": "ON"
+      },
+      "environment": {
+        "CMAKE_BUILD_PARALLEL_LEVEL": "4"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "rpmbuild",
+      "displayName": "RPM Build",
+      "configurePreset": "rpmbuild",
+      "configuration": "Release",
+      "targets": []
+    }
+  ]
+}
