@@ -18,7 +18,7 @@ Source0:        %{name}-%{version}.tar.gz
 # >>>>>>>>> TODO: REMOVE THIS is there is custom CMakeUuserPresets.json
 # add a second source with a custom CMakeUuserPresets.json
 Source1:        cmake_preset.tar.gz
-# <<<<<<<<<
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # Basic build requirements for a JUCE based plugin
 BuildRequires:  cmake
@@ -58,6 +58,14 @@ Summary: LV2 plugin of %{name}
 
 %description lv2
 This package contains %{name} as a LV2 plugin.
+
+# >>>>>>>>> TODO: Uncomment this if a data package is needed
+# %package data
+# Summary: Data files for %{name}
+
+# %description data
+# Datafiles for %{name}
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 %prep
 %autosetup
@@ -102,6 +110,12 @@ This package contains %{name} as a LV2 plugin.
 %doc README.md
 %{_bindir}/*
 
+# >>>>>>>>> TODO: Uncomment this if a data package is needed
+# %files data
+# %license LICENSE
+# %doc README.md
+# %{_datadir}/%{name}/
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 %changelog
 %autochangelog
