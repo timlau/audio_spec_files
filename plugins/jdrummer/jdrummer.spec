@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20260204.1a10d3e
+%global gitdate .git20260205.3c6a5a4
 %global builddest  redhat-linux-build/jdrummer_artefacts/Release
 %global buildname jdrummer
 
