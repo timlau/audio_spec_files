@@ -13,7 +13,25 @@
       "generator": "Ninja",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CPM_USE_LOCAL_PACKAGES": "ON"
+        "CPM_USE_LOCAL_PACKAGES": "ON",
+        "COPY_PLUGIN_AFTER_BUILD": "OFF",
+        "LINUX_INSTALL_SYSTEM": "ON"
+      },
+      "environment": {
+        "CMAKE_BUILD_PARALLEL_LEVEL": "4"
+      }
+    },
+
+    {
+      "name": "rpmbuild-debug",
+      "displayName": "RPM Build Debug",
+      "description": "RPM build using Ninja generator",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CPM_USE_LOCAL_PACKAGES": "ON",
+        "COPY_PLUGIN_AFTER_BUILD": "OFF",
+        "LINUX_INSTALL_SYSTEM": "ON"
       },
       "environment": {
         "CMAKE_BUILD_PARALLEL_LEVEL": "4"
@@ -26,6 +44,14 @@
       "displayName": "RPM Build",
       "configurePreset": "rpmbuild",
       "configuration": "Release",
+      "targets": []
+    },
+
+    {
+      "name": "rpmbuild-debug",
+      "displayName": "RPM Build",
+      "configurePreset": "rpmbuild",
+      "configuration": "Debug",
       "targets": []
     }
   ]

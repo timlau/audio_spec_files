@@ -125,8 +125,8 @@ coprbuild: srpm
 	@copr-cli build --nowait $(COPR_REPO) $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm
 .PHONY: coprbuild
 
-clean:
-	@rm -rf $(BUILDDIR)
+clean: clean-archive clean-build
+	@rm -rf $(SRC_DIR)
 .PHONY: clean
 
 clean-archive:
@@ -140,4 +140,6 @@ clean-builddep:
 clean-build:
 	@rm -rf $(BUILDDIR)/BUILD
 	@rm -rf $(BUILDDIR)/RPMS
+	@rm -rf $(BUILDDIR)/SRPMS
+
 .PHONY: cleam-build
