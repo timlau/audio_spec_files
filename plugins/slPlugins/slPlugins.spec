@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20250222.a74ffd3
+%global gitdate .git20260206.912f766
 %global buildname slPlugins
 
 Name:           slPlugins
