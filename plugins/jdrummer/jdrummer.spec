@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  cmake(juce) = 8.0.11
 
+Recommends: %{name}-data%{?_isa} = %{version}-%{release}
 
 
 %description
@@ -42,6 +43,7 @@ a composition tool, and an intelligent Groove Matcher that analyzes audio to fin
 
 %package clap
 Summary: CLAP plugin of %{name}
+Recommends: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description clap
 JDrummer features Soundfont-based drum kits, a comprehensive groove library with tempo-synced playback,
@@ -50,6 +52,7 @@ This package contains %{name} as a CLAP plugin.
 
 %package vst3
 Summary: VST3 plugin of %{name}
+Recommends: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description vst3
 JDrummer features Soundfont-based drum kits, a comprehensive groove library with tempo-synced playback,
@@ -58,6 +61,7 @@ This package contains %{name} as a VST3 plugin.
 
 %package lv2
 Summary: LV2 plugin of %{name}
+Recommends: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description lv2
 JDrummer features Soundfont-based drum kits, a comprehensive groove library with tempo-synced playback,
