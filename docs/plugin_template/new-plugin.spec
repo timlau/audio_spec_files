@@ -36,6 +36,10 @@ BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  cmake(juce) = 8.0.11
 
+# TODO: If a -data is used then comment out this weak or hard requirement
+# Recommends: %{name}-data%{?_isa} = %{version}-%{release}
+# Requires: %{name}-data%{?_isa} = %{version}-%{release}
+
 
 
 %description
@@ -43,21 +47,33 @@ BuildRequires:  cmake(juce) = 8.0.11
 
 %package clap
 Summary: CLAP plugin of %{name}
+# TODO: If a -data is used then comment out this weak or hard requirement
+# Recommends: %{name}-data%{?_isa} = %{version}-%{release}
+# Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description clap
 This package contains %{name} as a CLAP plugin.
 
 %package vst3
 Summary: VST3 plugin of %{name}
+# TODO: If a -data is used then comment out this weak or hard requirement
+# Recommends: %{name}-data%{?_isa} = %{version}-%{release}
+# Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description vst3
 This package contains %{name} as a VST3 plugin.
 
 %package lv2
 Summary: LV2 plugin of %{name}
+# TODO: If a -data is used then comment out this weak or hard requirement
+# Recommends: %{name}-data%{?_isa} = %{version}-%{release}
+# Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 %description lv2
 This package contains %{name} as a LV2 plugin.
+# TODO: If a -data is used then comment out this weak or hard requirement
+# Recommends: %{name}-data%{?_isa} = %{version}-%{release}
+# Requires: %{name}-data%{?_isa} = %{version}-%{release}
 
 # >>>>>>>>> TODO: Uncomment this if a data package is needed
 # %package data
