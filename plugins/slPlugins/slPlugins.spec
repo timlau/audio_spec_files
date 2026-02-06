@@ -91,17 +91,17 @@ This package contains %{name} as a LV2 plugin.
 %cmake_install
 
 %files clap
-%license LICENSE
+%license LICENSE.md
 %doc README.md
 %{_libdir}/clap/*.clap
 
 %files vst3
-%license LICENSE
+%license LICENSE.md
 %doc README.md
 %{_libdir}/vst3/*.vst3/*
 
 %files lv2
-%license LICENSE
+%license LICENSE.md
 %doc README.md
 %{_libdir}/lv2/*.lv2/*
 
