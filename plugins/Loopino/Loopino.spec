@@ -14,10 +14,6 @@ URL:            https://github.com/brummer10/Loopino
 # for a Makefile that can be used to create the source tarball
 Source0:        %{name}-%{version}.tar.gz
 
-
-
-# libsndfile1-dev
-
 BuildRequires:  make
 BuildRequires:  gcc-c++
 BuildRequires:  pipewire-jack-audio-connection-kit-devel
