@@ -17,6 +17,7 @@ ifeq (,$(wildcard $(TAR_GZ)))
 	@spectool -g -S $(PROJECT).spec -C ${BUILDDIR}/SOURCES
 	@echo "Archive created : $(TAR_GZ)"
 	@$(MAKE) -s copy_pactches
+	@$(MAKE) -s copy_cmake_preset
 endif
 .PHONY: archive
 
