@@ -4,7 +4,7 @@
 
 Name:           JUCE
 Version:        8.0.12
-Release:        %autorelease%{?dist}
+Release:        %autorelease
 Summary:        JUCE is an open-source cross-platform C++ application framework
 
 License:        GPLv3+

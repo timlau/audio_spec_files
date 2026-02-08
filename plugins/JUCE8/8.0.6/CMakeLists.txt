@@ -32,10 +32,9 @@
 
 cmake_minimum_required(VERSION 3.22)
 
-project(JUCE VERSION 8.0.6 C CXX)
+project(JUCE VERSION 8.0.6 LANGUAGES C CXX)
 
 include(CMakeDependentOption)
-include(GNUInstallDirs)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS YES)
 
@@ -138,10 +137,10 @@ write_basic_package_version_file("${JUCE_BINARY_DIR}/JUCEConfigVersion.cmake"
     VERSION ${JUCE_VERSION}
     COMPATIBILITY ExactVersion)
 
-set(JUCE_INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/JUCE" CACHE STRING
+set(JUCE_INSTALL_DESTINATION "lib/cmake/JUCE-${JUCE_VERSION}" CACHE STRING
     "The location, relative to the install prefix, where the JUCE config file will be installed")
 
-set(JUCE_MODULE_PATH "${CMAKE_INSTALL_INCLUDEDIR}/JUCE")
+set(JUCE_MODULE_PATH "include/JUCE-${JUCE_VERSION}/modules")
 set(UTILS_INSTALL_DIR "${JUCE_INSTALL_DESTINATION}")
 set(JUCEAIDE_PATH "${JUCE_TOOL_INSTALL_DIR}/${JUCE_JUCEAIDE_NAME}")
 configure_package_config_file("${JUCE_CMAKE_UTILS_DIR}/JUCEConfig.cmake.in"
@@ -182,7 +181,14 @@ if(("${CMAKE_SOURCE_DIR}" STREQUAL "${JUCE_SOURCE_DIR}") AND (NOT JUCE_BUILD_HEL
     _juce_add_lv2_manifest_helper_target()
 
     if(TARGET juce_lv2_helper)
-        install(TARGETS juce_lv2_helper EXPORT LV2_HELPER DESTINATION "${CMAKE_INSTALL_BINDIR}")
+        install(TARGETS juce_lv2_helper EXPORT LV2_HELPER DESTINATION "${JUCE_TOOL_INSTALL_DIR")
         install(EXPORT LV2_HELPER NAMESPACE juce:: DESTINATION "${JUCE_INSTALL_DESTINATION}")
+    endif()
+
+    _juce_add_vst3_manifest_helper_target()
+
+    if(TARGET juce_vst3_helper)
+    install(TARGETS juce_vst3_helper EXPORT VST3_HELPER DESTINATION "${JUCE_TOOL_INSTALL_DIR")
+        install(EXPORT VST3_HELPER NAMESPACE juce:: DESTINATION "${JUCE_INSTALL_DESTINATION}")
     endif()
 endif()
