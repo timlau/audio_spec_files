@@ -12,7 +12,9 @@ SUB_MODULES=$(shell sed -n 's/\tpath = //p' $(SRC_DIR)/.gitmodules)
 NAME = $(shell git config --get user.name)
 EMAIL = $(shell git config --get user.email)
 PACKAGER = $(NAME) <$(EMAIL)>
+CORES = $(shell nproc --ignore=2)
 RPMBUILD_OPTS = --define '_topdir $(BUILDDIR)' --define 'packager $(PACKAGER)'
+MOCK_OPTS = --define '_smp_mflags -j$(CORES)' --enable-network
 CMAKE_GZ = ${BUILDDIR}/SOURCES/cmake_preset.tar.gz
 REPO_DIR = /home/tim/OneDrive/RPMS/F43
 all: srpm
@@ -84,7 +86,7 @@ ifeq (,$(wildcard $(DNF_BUILDDEP_INSTALLED)))
 	@sudo dnf builddep -y ${PROJECT}.spec
 	@touch $(DNF_BUILDDEP_INSTALLED)
 endif
-	@rpmbuild $(RPMBUILD_OPTS) -ba ${PROJECT}.spec
+	@RPM_BUILD_NCPUS=$(CORES) rpmbuild $(RPMBUILD_OPTS) -ba ${PROJECT}.spec
 	@$(MAKE) -s show-rpms
 .PHONY: localbuild
 
@@ -94,17 +96,17 @@ show-rpms:
 .PHONY: show-rpms
 
 copy-rpms:
-    mkdir -p $(REPO_DIR)/${PROJECT}
-    @cp $(BUILDDIR)/RPMS/*/*.rpm $(REPO_DIR)/${PROJECT}/
-   
+	mkdir -p $(REPO_DIR)/${PROJECT}
+	@cp $(BUILDDIR)/RPMS/*/*.rpm $(REPO_DIR)/${PROJECT}/
+
 
 
 mockbuild: srpm
 	@echo "Building RPM in mock"
 ifdef MOCK_REPO
-	@mock -r $(MOCK_REL) --rebuild $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm -a $(MOCK_REPO) --enable-network
+	@mock -r $(MOCK_REL) --rebuild $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm -a $(MOCK_REPO) ${MOCK_OPTS}
 else
-	@mock -r $(MOCK_REL) --rebuild $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm --enable-network
+	@mock -r $(MOCK_REL) --rebuild $(BUILDDIR)/SRPMS/$(PROJECT)-$(VERSION)*.src.rpm ${MOCK_OPTS}
 endif
 	@echo "--> Build RPMs"
 	@tree -P *.rpm -I *.src.rpm $(MOCK_RESULT)
