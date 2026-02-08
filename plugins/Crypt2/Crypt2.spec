@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20260207.4aaf178
+%global gitdate .git20260208.fecd5ef
 %global builddest  redhat-linux-build/Crypt2_artefacts
 %global buildname Crypt2
 
@@ -15,11 +15,14 @@ URL:            https://github.com/vitling/crypt
 # check here : https://github.com/timlau/spec_files/tree/master/plpugins/
 # for a Makefile that can be used to create the source tarball
 Source0:        %{name}-%{version}.tar.gz
+# add a second source with a custom CMakeUuserPresets.json
+Source1:        cmake_preset.tar.gz
 
 # Basic build requirements for a JUCE based plugin
 BuildRequires:  cmake
 BuildRequires:  git
 BuildRequires:  gcc-c++
+BuildRequires:  ninja-build
 BuildRequires:  pipewire-jack-audio-connection-kit-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(freetype2)
@@ -29,7 +32,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  cmake(JUCE) = 8.0.11
+BuildRequires:  cmake(JUCE) = 8.0.12
 
 
 %description
@@ -58,10 +61,12 @@ This package contains %{name} as a LV2 plugin.
 
 %prep
 %autosetup
+# unpack the custom CMakeUuserPresets.json in same directory as the primary source
+%setup -T -D -a 1
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=Release -DCRYPT_COPY_PLUGIN_AFTER_BUILD=OFF -DCPM_USE_LOCAL_PACKAGES=ON
-%cmake_build --config Release
+%cmake --preset rpmbuild
+%cmake_build --preset rpmbuild
 
 %install
 %cmake_install
