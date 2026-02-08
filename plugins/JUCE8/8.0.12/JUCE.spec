@@ -1,6 +1,6 @@
 %global debug_package %{nil}
 %global builddest bin
-%global libname JUCE8.0-devel
+%global libname JUCE8_0_12-devel
 
 Name:           JUCE
 Version:        8.0.12
@@ -11,10 +11,13 @@ License:        GPLv3+
 URL:            https://github.com/juce-framework/JUCE
 
 Source0:        https://github.com/juce-framework/JUCE/archive/refs/tags/%{version}.tar.gz
+# add a second source with a custom CMakeUuserPresets.json
+Source1:        cmake_preset.tar.gz
 Patch0:         fix_cmake_paths.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
+BuildRequires:  ninja-build
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(xkbcommon-x11)
@@ -47,10 +50,12 @@ Summary:        JUCE is an open-source cross-platform C++ application framework
 
 %prep
 %autosetup -p1
+# unpack the custom CMakeUuserPresets.json in same directory as the primary source
+%setup -T -D -a 1
 
 %build
-%cmake -DJUCE_INSTALL_DESTINATION=%{_libdir}/cmake/%{name}-%{version} -DJUCE_MODULE_PATH=%{_includedir}/%{name}-%{version}/modules -DJUCE_TOOL_INSTALL_DIR=%{_bindir}
-%cmake_build
+%cmake --preset=rpmbuild -DJUCE_INSTALL_DESTINATION=%{_libdir}/cmake/%{name}-%{version} -DJUCE_MODULE_PATH=%{_includedir}/%{name}-%{version}/modules -DJUCE_TOOL_INSTALL_DIR=%{_libexecdir}/%{name}-%{version}
+%cmake_build --preset=rpmbuild
 
 %install
 %cmake_install --prefix %{_prefix}
@@ -58,10 +63,9 @@ Summary:        JUCE is an open-source cross-platform C++ application framework
 %files -n  %{libname}
 %license LICENSE.md
 %doc README.md
-%{_bindir}/juce*
 %{_libdir}/cmake/%{name}-%{version}/
 %{_includedir}/%{name}-%{version}/
-
+%{_libexecdir}/%{name}-%{version}/
 
 %changelog
 %autochangelog
