@@ -2,7 +2,7 @@ PROJECT  = Crypt2
 GIT_URL  = git@github.com:timlau/crypt.git
 
 # exclude submodules from source tarball
-# GIT_EXCLUDE = 
+# GIT_EXCLUDE =
 
 # Checkout a give git tag
 # GIT_TAG = v$(VERSION)
@@ -15,6 +15,7 @@ GIT_BRANCH = build-fedora
 
 # Mock repository for building RPMs with prebuild JUCE
 # MOCK_REPO = https://download.copr.fedorainfracloud.org/results/timlau/audio/fedora-43-x86_64/
+MOCK_REPO = file:///home/tim/OneDrive/RPMS
 
 ROOT = ../../common
 include $(ROOT)/Makefile.git.mk

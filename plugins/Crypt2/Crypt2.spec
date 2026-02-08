@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20260128.4aaf178
+%global gitdate .git20260207.4aaf178
 %global builddest  redhat-linux-build/Crypt2_artefacts
 %global buildname Crypt2
 

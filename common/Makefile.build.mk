@@ -14,7 +14,7 @@ EMAIL = $(shell git config --get user.email)
 PACKAGER = $(NAME) <$(EMAIL)>
 RPMBUILD_OPTS = --define '_topdir $(BUILDDIR)' --define 'packager $(PACKAGER)'
 CMAKE_GZ = ${BUILDDIR}/SOURCES/cmake_preset.tar.gz
-
+REPO_DIR = /home/tim/OneDrive/RPMS/F43
 all: srpm
 
 clone:
@@ -92,6 +92,12 @@ show-rpms:
 	@echo "--> Build RPMs"
 	@tree -P *.rpm -I *.src.rpm $(BUILDDIR)/RPMS
 .PHONY: show-rpms
+
+copy-rpms:
+    mkdir -p $(REPO_DIR)/${PROJECT}
+    @cp $(BUILDDIR)/RPMS/*/*.rpm $(REPO_DIR)/${PROJECT}/
+   
+
 
 mockbuild: srpm
 	@echo "Building RPM in mock"

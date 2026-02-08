@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20260206.912f766
+%global gitdate .git20260207.f8818c9
 %global buildname slPlugins
 
 Name:           slPlugins
@@ -30,7 +30,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  cmake(juce) = 8.0.12
+BuildRequires:  cmake(juce) = 8.0.11
 
 %description
 This package contains various audio plugins from SocaLabs.com. The following plugins are included:
@@ -85,7 +85,7 @@ This package contains %{name} as a LV2 plugin.
 
 %build
 %cmake --preset rpmbuild
-%cmake_build --preset rpmbuild
+%cmake_build --preset rpmbuild -j4
 
 %install
 %cmake_install
