@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global gitdate .git20260203.f0b1a21
+%global gitdate git20260203.f0b1a21
 %global builddest  redhat-linux-build/Vaporizer2_artefacts/Release
 %global buildname Vaporizer2
 
 Name:           Vaporizer2
 Version:        3.5.0
-Release:        %autorelease%{?gitdate}%{?dist}
+Release:        %autorelease -s %{?gitdate}
 Summary:        Vaporizer2 is a hybrid wavetable additive / subtractive synthesizer / sampler workstation.
 
 License:        GPLv3+

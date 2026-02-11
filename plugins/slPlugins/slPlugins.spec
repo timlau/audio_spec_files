@@ -1,10 +1,10 @@
 %global debug_package %{nil}
-%global gitdate .git20260207.f8818c9
+%global gitdate git20260208.dd1cd24
 %global buildname slPlugins
 
 Name:           slPlugins
 Version:        1.1.0
-Release:        %autorelease%{?gitdate}%{?dist}
+Release:        %autorelease -s %{?gitdate}
 Summary:        Various audio Plugins from SocaLabs.com
 License:        GPLv3+
 URL:            https://github.com/FigBug/slPlugins

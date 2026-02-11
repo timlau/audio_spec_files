@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global gitdate .git20260201.1cf22b6
+%global gitdate git20260201.1cf22b6
 %global builddest redhat-linux-build/BYOD_artefacts/Release
 %global buildname BYOD
 
 Name:           BYOD
 Version:        1.3.1
-Release:        %autorelease%{?gitdate}%{?dist}
+Release:        %autorelease -s %{?gitdate}
 Summary:        BYOD is a guitar effects plugin with a customisable signal chain
 
 License:        GPLv3+

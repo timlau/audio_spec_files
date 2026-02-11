@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global gitdate .git20260131.d85adc3
+%global gitdate git20260131.d85adc3
 %global builddest  redhat-linux-build/LostAndFoundPiano_artefacts
 %global buildname LostAndFoundPiano
 
 Name:           LostAndFoundPiano
 Version:        1.0.0
-Release:        %autorelease%{?gitdate}%{?dist}
+Release:        %autorelease -s %{?gitdate}
 Summary:        A virtual instrument of the classic mda Piano and mda EPiano.
 
 License:        GPLv3+

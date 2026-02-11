@@ -1,12 +1,12 @@
 %global debug_package %{nil}
-%global gitdate .git20260129.d9e3553
+%global gitdate git20260129.d9e3553
 %global builddest redhat-linux-build/obxf_products
 %global buildname OB-Xf
 %global git_hash b780eae
 
 Name:           OB-Xf
 Version:        0.9.27
-Release:        %autorelease%{?gitdate}%{?dist}
+Release:        %autorelease -s %{?gitdate}
 Summary:        OB-Xf is a Synth based on the legendary Oberheim OB-X.
 
 License:        GPLv3+

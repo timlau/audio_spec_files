@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global gitdate .git20260206.eb37fc8
+%global gitdate git20260206.eb37fc8
 %global builddest  redhat-linux-build/Wavetable_artefacts/Release
 %global buildname Wavetable
 %global cmake_preset rpmbuild
@@ -7,7 +7,7 @@
 
 Name:           Wavetable
 Version:        1.0.27
-Release:        %autorelease%{?gitdate}%{?dist}
+Release:        %autorelease -s %{?gitdate}
 Summary:        A 2 oscillator wavetable synthesizer with flexible modulation options
 License:        GPLv3+
 URL:            https://github.com/timlau/Wavetable

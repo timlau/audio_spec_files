@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global gitdate .git20250222.a74ffd3
+%global gitdate git20250222.a74ffd3
 %global builddest  redhat-linux-build/{{ name }}_artefacts/Release
 %global buildname {{ name }}
 
 Name:           {{ name }}
 Version:        {{ version }}
-Release:        %autorelease%{?gitdate}%{?dist}
+Release:        %autorelease -s %{?gitdate}
 Summary:        # TODO: Insert summary here
 
 License:        GPLv3+

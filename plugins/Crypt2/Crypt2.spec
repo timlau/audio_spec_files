@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global gitdate .git20260208.fecd5ef
+%global gitdate git20260208.fecd5ef
 %global builddest  redhat-linux-build/Crypt2_artefacts
 %global buildname Crypt2
 
 Name:           Crypt2
 Version:        2.1.0
-Release:        %autorelease%{?gitdate}%{?dist}
+Release:        %autorelease -s %{?gitdate}
 Summary:        Crypt is a software synthesiser plugin designed for creating spacious cold hyper-unisoned synth sounds
 
 License:        GPLv3+

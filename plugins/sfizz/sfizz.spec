@@ -1,9 +1,9 @@
 %global debug_package %{nil}
-%global gitdate .git20260127.5e0be2e
+%global gitdate git20260211.5e0be2e
 
 Name:           sfizz
 Version:        1.2.3
-Release:        3%{?gitdate}%{?dist}
+Release:        %autorelease -s %{?gitdate}
 Summary:        Sampler plugin and library for SFZ instruments
 
 License:        BSD-2-Clause
@@ -20,7 +20,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(x11) 
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(pango)
@@ -85,13 +85,4 @@ Sfizz puredata (pd) plugin
 %{_libdir}/pd/extra/sfizz/*
 
 %changelog
-* Fri Feb 21 2025 Tim Lauridsen <tla@rasmil.dk> - 1.2.3-3
-- use pkgconfig(jack) as buildrequire
-* Thu Feb 20 2025 Tim Lauridsen <tla@rasmil.dk> - 1.2.3-2
-- Converted to use pkgconfig BuildRequires
-- Don't build standalone clients and shared libraries
-- Dont build debuginfo packages
-- gitdate macro added to release tag (set outside by srpm build)
-* Tue Feb 18 2025 Tim Lauridsen <tla@rasmil.dk> - 1.2.3-1
-- Initial build based on the Open Suse build 
-- Added VST3,LV2 & PD subpackages
+%autochangelog

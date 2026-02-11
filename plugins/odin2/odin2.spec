@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global gitdate .git20260129.c7bd6ae0
+%global gitdate git20260129.c7bd6ae0
 %global builddest redhat-linux-build/Odin2_artefacts/Release/
 %global buildname Odin2
 
 Name:           odin2
 Version:        2.4.1
-Release:        %autorelease%{?gitdate}%{?dist}
+Release:        %autorelease -s %{?gitdate}
 Summary:        Odin 2 is a 24-voice polyphonic powerhouse
 
 License:        GPLv3+

@@ -3,7 +3,7 @@
 
 Name:           Loopino
 Version:        0.9.6
-Release:        %autorelease%{?dist}
+Release:        %autorelease
 Summary:        Loopino is a lightweight audio sampler
 
 License:        GPLv3

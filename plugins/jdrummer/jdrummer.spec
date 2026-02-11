@@ -1,11 +1,11 @@
 %global debug_package %{nil}
-%global gitdate .git20260205.221da0c
+%global gitdate git20260205.221da0c
 %global builddest  redhat-linux-build/jdrummer_artefacts/Release
 %global buildname jdrummer
 
 Name:           jdrummer
 Version:        1.0.0
-Release:        %autorelease%{?gitdate}%{?dist}
+Release:        %autorelease -s %{?gitdate}
 Summary:        Soundfont-based drum kit, comprehensive groove library, composition tool, and intelligent Groove Matcher
 
 License:        GPLv3+
