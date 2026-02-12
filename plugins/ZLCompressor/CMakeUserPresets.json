@@ -1,0 +1,61 @@
+{
+  "$schema": "https://cmake.org/cmake/help/latest/_downloads/3e2d73bff478d88a7de0de736ba5e361/schema.json",
+  "version": 10,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 31
+  },
+  "configurePresets": [
+    {
+      "name": "rpmbuild",
+      "displayName": "RPM Build",
+      "description": "RPM build using Ninja generator",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+         "KFR_ENABLE_MULTIARCH":"OFF",
+         "ZL_JUCE_FORMATS": "VST3;LV2",
+         "ZL_JUCE_COPY_PLUGIN":"OFF",
+         "KFR_ARCH":"host"
+      },
+      "environment": {
+        "CMAKE_BUILD_PARALLEL_LEVEL": "4"
+      }
+    },
+
+    {
+      "name": "rpmbuild-debug",
+      "displayName": "RPM Debug Build",
+      "description": "RPM build using Ninja generator",
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "KFR_ENABLE_MULTIARCH":"OFF",
+        "ZL_JUCE_FORMATS": "VST3;LV2",
+        "ZL_JUCE_COPY_PLUGIN":"OFF",
+        "KFR_ARCH":"host"
+      },
+      "environment": {
+        "CMAKE_BUILD_PARALLEL_LEVEL": "4"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "rpmbuild",
+      "displayName": "RPM Build",
+      "configurePreset": "rpmbuild",
+      "configuration": "Release",
+      "targets": []
+    },
+
+    {
+      "name": "rpmbuild-debug",
+      "displayName": "RPM Debug Build",
+      "configurePreset": "rpmbuild-debug",
+      "configuration": "Debug",
+      "targets": [],
+      "jobs": 4
+    }
+  ]
+}
