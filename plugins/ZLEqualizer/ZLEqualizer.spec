@@ -9,7 +9,7 @@ Version:        0.4.0
 Release:        %autorelease -s %{?gitdate}
 Summary:        ZLEqualizer is a equalizer plugin.
 
-License:        AGPL-3.0
+License:        AGPL-3.0-or-later
 URL:            https://github.com/ZL-Audio/ZLEqualizer
 
 # The source for this package was pulled from upstream's vcs.

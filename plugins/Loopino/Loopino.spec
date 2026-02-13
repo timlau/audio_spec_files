@@ -6,7 +6,7 @@ Version:        0.9.6
 Release:        %autorelease
 Summary:        Loopino is a lightweight audio sampler
 
-License:        BSD-3-Clause AND GPL-2.0 AND 0BSD
+License:        BSD-3-Clause AND GPL-2.0-or-later AND 0BSD
 # Rubberband is GPL-2.0
 # libxputty us 0BSD
 URL:            https://github.com/brummer10/Loopino

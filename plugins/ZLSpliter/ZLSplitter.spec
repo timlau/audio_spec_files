@@ -9,7 +9,7 @@ Version:        0.2.1
 Release:        %autorelease -s %{?gitdate}
 Summary:        ZLSplitter is a equalizer plugin.
 
-License:        AGPL-3.0
+License:        AGPL-3.0-or-later
 URL:            https://github.com/ZL-Audio/ZLSplitter
 
 # The source for this package was pulled from upstream's vcs.

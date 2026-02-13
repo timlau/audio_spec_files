@@ -7,7 +7,7 @@ Version:        8.0.11
 Release:        %autorelease
 Summary:        JUCE is an open-source cross-platform C++ application framework
 
-License:        AGPL-3.0
+License:        AGPL-3.0-or-later
 URL:            https://github.com/juce-framework/JUCE
 
 Source0:        https://github.com/juce-framework/JUCE/archive/refs/tags/%{version}.tar.gz
