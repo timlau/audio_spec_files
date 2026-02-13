@@ -1,6 +1,6 @@
 %global debug_package %{nil}
 %global builddest bin
-%global libname JUCE7.0-devel
+%global libname JUCE7_0_12-devel
 
 Name:           JUCE
 Version:        7.0.12
