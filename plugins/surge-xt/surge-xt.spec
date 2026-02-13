@@ -7,7 +7,7 @@ Version:        1.3.4
 Release:        1%{?gitdate}%{?dist}
 Summary:        Hybrid synthesizer
 
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://surge-synthesizer.github.io/
 
 # The source for this package was pulled from upstream's vcs.

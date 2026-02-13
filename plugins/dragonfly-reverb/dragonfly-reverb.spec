@@ -8,7 +8,7 @@ Version:        3.2.10
 Release:        1%{?gitdate}%{?dist}
 Summary:        A set of free reverb effects for audio
 
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://github.com/michaelwillis/dragonfly-reverb
 
 # The source for this package was pulled from upstream's vcs.

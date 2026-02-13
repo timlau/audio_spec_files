@@ -8,7 +8,7 @@ Version:        1.0.1
 Release:        2%{?dist}
 Summary:        Standalone version of Dexed a synth that is closely modeled on the Yamaha DX7
 
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://github.com/asb2m10/dexed
 
 # The source for this package was pulled from upstream's vcs.

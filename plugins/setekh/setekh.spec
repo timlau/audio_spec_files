@@ -8,7 +8,7 @@ Version:        0.0.1
 Release:        %autorelease -s %{?gitdate}
 Summary:        A minimalistic yet sonically powerful distortion plugin
 
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://github.com/timlau/setekh
 
 # The source for this package was pulled from upstream's vcs.

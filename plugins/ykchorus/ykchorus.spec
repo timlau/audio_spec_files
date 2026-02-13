@@ -7,7 +7,7 @@ Version:        0.2.4
 Release:        %autorelease -s %{?gitdate}
 Summary:        A chorus effect
 
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://github.com/SpotlightKid/ykchorus
 # The source for this package was pulled from upstream's vcs.
 # check here : https://github.com/timlau/spec_files/tree/master/plpugins/

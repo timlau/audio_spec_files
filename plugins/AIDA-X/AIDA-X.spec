@@ -7,7 +7,7 @@ Version:        1.1.0
 Release:        1%{?gitdate}%{?dist}
 Summary:        Amp Model Player leveraging
 
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://github.com/AidaDSP/AIDA-X
 
 # The source for this package was pulled from upstream's vcs.

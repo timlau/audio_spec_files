@@ -8,7 +8,7 @@ Version:        2.1.0
 Release:        %autorelease -s %{?gitdate}
 Summary:        Crypt is a software synthesiser plugin designed for creating spacious cold hyper-unisoned synth sounds
 
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://github.com/vitling/crypt
 
 # The source for this package was pulled from upstream's vcs.

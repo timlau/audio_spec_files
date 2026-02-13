@@ -7,7 +7,7 @@ Version:        2.5.1
 Release:        1%{?dist}
 Summary:        Polyphone is a multi-platform and open-source soundfont editor for creating musical instruments.
 
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://github.com/davy7125/polyphone
 
 Source0:        https://github.com/davy7125/polyphone/archive/refs/tags/%{version}.tar.gz

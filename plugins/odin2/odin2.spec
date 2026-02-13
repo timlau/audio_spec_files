@@ -8,7 +8,7 @@ Version:        2.4.1
 Release:        %autorelease -s %{?gitdate}
 Summary:        Odin 2 is a 24-voice polyphonic powerhouse
 
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://github.com/TheWaveWarden/odin2
 
 # The source for this package was pulled from upstream's vcs.

@@ -6,7 +6,7 @@ Version:        0.1.9
 Release:        1%{?gitdate}%{?dist}
 Summary:        LV2 plugin for using neural network machine learning amp models
 
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://github.com/mikeoliphant/neural-amp-modeler-lv2
 
 # The source for this package was pulled from upstream's vcs.
