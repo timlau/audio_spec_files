@@ -9,11 +9,11 @@ GIT_EXCLUDE =  libs/JUCE libs/fmt libs/clap-juce-extensions
 # GIT_TAG = v$(VERSION)
 
 # # Checkout a given git branch
-GIT_BRANCH = fedora_build
+GIT_BRANCH = build_fedora
 
 # Skip ckecking out submodules
 # SKIP_SUBMODULES = true
- 
+
 # Mock repository for building RPMs with prebuild JUCE
 MOCK_REPO = https://download.copr.fedorainfracloud.org/results/timlau/audio/fedora-43-x86_64/
 
