@@ -8,7 +8,7 @@ Version:        3.2.10
 Release:        1%{?gitdate}%{?dist}
 Summary:        A set of free reverb effects for audio
 
-License:        GPLv3
+License:        GPL-3.0
 URL:            https://github.com/michaelwillis/dragonfly-reverb
 
 # The source for this package was pulled from upstream's vcs.
@@ -20,7 +20,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  cmake
 BuildRequires:  pipewire-jack-audio-connection-kit-devel
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(x11) 
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xrender)
 
@@ -67,8 +67,8 @@ install -d -m 755 %{buildroot}%{_bindir}
 install -d -m 755 %{buildroot}%{_libdir}/vst3
 install -d -m 755 %{buildroot}%{_libdir}/clap
 install -d -m 755 %{buildroot}%{_libdir}/lv2
-cp -R %{builddest}/Dragonfly*.vst3 %{buildroot}%{_libdir}/vst3/ 
-cp -R %{builddest}/Dragonfly*.lv2 %{buildroot}%{_libdir}/lv2/ 
+cp -R %{builddest}/Dragonfly*.vst3 %{buildroot}%{_libdir}/vst3/
+cp -R %{builddest}/Dragonfly*.lv2 %{buildroot}%{_libdir}/lv2/
 install %{builddest}/Dragonfly*.clap %{buildroot}%{_libdir}/clap/
 install %{builddest}/DragonflyHallReverb %{buildroot}%{_bindir}/
 install %{builddest}/DragonflyPlateReverb %{buildroot}%{_bindir}/
@@ -90,7 +90,7 @@ install %{builddest}/DragonflyEarlyReflections %{buildroot}%{_bindir}/
 %doc README.md
 %{_libdir}/lv2/Dragonfly*.lv2/*
 
-%files 
+%files
 %license LICENSE
 %doc README.md
 %{_bindir}/DragonflyHallReverb

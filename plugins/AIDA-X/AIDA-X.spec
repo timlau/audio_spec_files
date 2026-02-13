@@ -7,7 +7,7 @@ Version:        1.1.0
 Release:        1%{?gitdate}%{?dist}
 Summary:        Amp Model Player leveraging
 
-License:        GPLv3
+License:        GPL-3.0
 URL:            https://github.com/AidaDSP/AIDA-X
 
 # The source for this package was pulled from upstream's vcs.
@@ -50,7 +50,7 @@ This package contains AIDA-X as a LV2 plugin.
 
 
 %build
-%cmake 
+%cmake
 %cmake_build
 
 %install
@@ -60,8 +60,8 @@ install -d -m 755 %{buildroot}%{_bindir}
 install -d -m 755 %{buildroot}%{_libdir}/vst3
 install -d -m 755 %{buildroot}%{_libdir}/clap
 install -d -m 755 %{buildroot}%{_libdir}/lv2
-cp -R %{builddest}/%{name}.vst3 %{buildroot}%{_libdir}/vst3/ 
-cp -R %{builddest}/%{name}.lv2 %{buildroot}%{_libdir}/lv2/ 
+cp -R %{builddest}/%{name}.vst3 %{buildroot}%{_libdir}/vst3/
+cp -R %{builddest}/%{name}.lv2 %{buildroot}%{_libdir}/lv2/
 install %{builddest}/%{name}.clap %{buildroot}%{_libdir}/clap/
 install %{builddest}/%{name} %{buildroot}%{_bindir}/
 
@@ -80,7 +80,7 @@ install %{builddest}/%{name} %{buildroot}%{_bindir}/
 %doc README.md
 %{_libdir}/lv2/%{name}.lv2/*
 
-%files 
+%files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}

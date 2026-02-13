@@ -8,7 +8,7 @@ Version:        3.5.0
 Release:        %autorelease -s %{?gitdate}
 Summary:        Vaporizer2 is a hybrid wavetable additive / subtractive synthesizer / sampler workstation.
 
-License:        GPLv3+
+License:        GPL-3.0 AND GPL-2.0
 URL:            https://github.com/VASTDynamics/Vaporizer2
 
 # The source for this package was pulled from upstream's vcs.

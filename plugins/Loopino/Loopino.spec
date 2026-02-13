@@ -6,7 +6,7 @@ Version:        0.9.6
 Release:        %autorelease
 Summary:        Loopino is a lightweight audio sampler
 
-License:        GPLv3
+License:        BSD-3-Clause
 URL:            https://github.com/brummer10/Loopino
 
 # The source for this package was pulled from upstream's vcs.

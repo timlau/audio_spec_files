@@ -6,7 +6,7 @@ Name:           slPlugins
 Version:        1.1.0
 Release:        %autorelease -s %{?gitdate}
 Summary:        Various audio Plugins from SocaLabs.com
-License:        GPLv3+
+License:        BSD-3-Clause
 URL:            https://github.com/FigBug/slPlugins
 
 # The source for this package was pulled from upstream's vcs.

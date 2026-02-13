@@ -8,7 +8,7 @@ Version:        1.0.0
 Release:        %autorelease -s %{?gitdate}
 Summary:        A virtual instrument of the classic mda Piano and mda EPiano.
 
-License:        GPLv3+
+License:        GPL-3.0
 URL:            https://github.com/timlau/lost-and-found-piano
 
 # The source for this package was pulled from upstream's vcs.

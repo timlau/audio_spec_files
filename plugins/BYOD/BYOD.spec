@@ -8,7 +8,7 @@ Version:        1.3.1
 Release:        %autorelease -s %{?gitdate}
 Summary:        BYOD is a guitar effects plugin with a customisable signal chain
 
-License:        GPLv3+
+License:        GPL-3.0
 URL:            https://github.com/Chowdhury-DSP/BYOD
 
 # The source for this package was pulled from upstream's vcs.

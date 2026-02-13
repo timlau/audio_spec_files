@@ -7,7 +7,7 @@ Version:        0.2.4
 Release:        2%{?gitdate}%{?dist}
 Summary:        A chorus effect
 
-License:        GPLv2
+License:        GPL-3.0
 URL:            https://github.com/SpotlightKid/ykchorus
 # The source for this package was pulled from upstream's vcs.
 # check here : https://github.com/timlau/spec_files/tree/master/plpugins/
@@ -19,7 +19,7 @@ BuildRequires:  make
 BuildRequires:  patch
 BuildRequires:  pipewire-jack-audio-connection-kit-devel
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(x11) 
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xrender)
 
@@ -73,7 +73,7 @@ ln -s -r --force dpf/dgl/src/pugl.cpp dpf/dgl/src/pugl.mm
 %doc README.md
 %{_libdir}/lv2/*.lv2/*
 
-%files 
+%files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}

@@ -9,7 +9,7 @@ Version:        0.9.27
 Release:        %autorelease -s %{?gitdate}
 Summary:        OB-Xf is a Synth based on the legendary Oberheim OB-X.
 
-License:        GPLv3+
+License:        GPL-3.0
 URL:            https://github.com/surge-synthesizer/OB-Xf
 
 # The source for this package was pulled from upstream's vcs.

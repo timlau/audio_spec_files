@@ -5,7 +5,7 @@ Version:        3.5.2
 Release:        1%{?dist}
 Summary:        Geonkick - a free software percussion synthesizer
 
-License:        GPLv3
+License:        GPL-3.0
 URL:            https://github.com/Geonkick-Synthesizer/geonkick/
 Source0:        https://github.com/Geonkick-Synthesizer/geonkick/archive/refs/tags/v%{version}.tar.gz
 Patch0:         0001-no-arguments-for-geonkick_midi_channels_number.patch
@@ -67,7 +67,7 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 
 %changelog
 * Thu Feb 20 2025 Tim Lauridsen <tla@rasmil.dk> - 3.5.2-1
-- version 3.5.2 
+- version 3.5.2
 - added lv2 plugin in subpackage
 * Tue Apr 27 2021 Tim Lauridsen <tla@rasmil.dk> - 2.8.0-1
 - Initial SPEC

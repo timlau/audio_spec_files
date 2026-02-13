@@ -9,7 +9,7 @@ Name:           Wavetable
 Version:        1.0.27
 Release:        %autorelease -s %{?gitdate}
 Summary:        A 2 oscillator wavetable synthesizer with flexible modulation options
-License:        GPLv3+
+License:        BSD-3-Clause
 URL:            https://github.com/timlau/Wavetable
 
 # The source for this package was pulled from upstream's vcs.

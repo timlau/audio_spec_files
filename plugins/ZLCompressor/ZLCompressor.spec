@@ -9,7 +9,7 @@ Version:        0.4.0
 Release:        %autorelease -s %{?gitdate}
 Summary:        ZL Compressor is a compressor plugin.
 
-License:        GPLv3+
+License:        AGPL-3.0
 URL:            https://github.com/ZL-Audio/ZLCompressor
 
 # The source for this package was pulled from upstream's vcs.

@@ -8,7 +8,7 @@ Version:        {{ version }}
 Release:        %autorelease -s %{?gitdate}
 Summary:        # TODO: Insert summary here
 
-License:        GPLv3+
+License:        GPL-3.0-or-later
 URL:            https://github.com/{{ github_owner }}/{{ github_project }}
 
 # The source for this package was pulled from upstream's vcs.

@@ -8,7 +8,7 @@ Version:        1.0.0
 Release:        %autorelease -s %{?gitdate}
 Summary:        Soundfont-based drum kit, comprehensive groove library, composition tool, and intelligent Groove Matcher
 
-License:        GPLv3+
+License:        GPL-3.0
 URL:            https://github.com/timlau/jdrummer
 
 # The source for this package was pulled from upstream's vcs.
