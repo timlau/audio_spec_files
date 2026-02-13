@@ -1,10 +1,10 @@
 %global debug_package %{nil}
-%global gitdate .git20260127.ee0e362
+%global gitdate git20260213.ee0e362
 %global builddest bin
 
 Name:           ykchorus
 Version:        0.2.4
-Release:        2%{?gitdate}%{?dist}
+Release:        %autorelease -s %{?gitdate}
 Summary:        A chorus effect
 
 License:        GPL-3.0
@@ -79,7 +79,4 @@ ln -s -r --force dpf/dgl/src/pugl.cpp dpf/dgl/src/pugl.mm
 %{_bindir}/%{name}
 
 %changelog
-* Mon Mar 3 2025 Tim Lauridsen <tla@rasmil.dk> - 0.2.4-2
-- don't build VST2 & LADSPA
-* Sat Mar 1 2025 Tim Lauridsen <tla@rasmil.dk> - 0.2.4-1
-- Initial package
+%autochangelog
