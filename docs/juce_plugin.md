@@ -10,7 +10,7 @@ Copy the `template/cmake/cmake` directory into your project.
 
 add the following lines to your `CMakeLists.txt` file:
 
-```
+```cmake
 # Fetch JUCE from GitHub
 include(cmake/CPM.cmake)
 CPMAddPackage("gh:/juce-framework/JUCE#8.0.12")
