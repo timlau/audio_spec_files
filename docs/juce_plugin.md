@@ -2,6 +2,8 @@
 
 ## Fork the github repository
 
+## Clone the forked github repository 
+
 ## Improve CMakeLists.txt file
 
 ### Use CPM for dependency management
