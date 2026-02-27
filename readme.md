@@ -9,3 +9,7 @@ Check this [webpage](https://timlau.github.io/posts/fedora-audio-timlau-audio/) 
 ## Contributing
 
 If you have any suggestions or improvements, feel free to open an issue or submit a pull request.
+
+## Packaging Procedures
+
+[Juce based plugins](docs/juce_plugin.md)
